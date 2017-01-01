@@ -1,0 +1,17 @@
+﻿@model IEnumerable<RealEstateAgency.Domain.Entities.Offer>
+
+@{
+    ViewBag.Title = "Offers";
+}
+
+<h2>List</h2>
+
+@foreach (var o in Model)
+{
+    <div>
+        <h3>@o.Name</h3>
+        <h4>@o.Price.ToString("c")</h4>
+        @o.Description
+    </div>
+}
+
