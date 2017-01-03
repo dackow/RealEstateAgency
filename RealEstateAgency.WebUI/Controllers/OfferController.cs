@@ -1,5 +1,6 @@
 ﻿using RealEstateAgency.Domain.Abstract;
 using RealEstateAgency.WebUI.Helpers;
+using RealEstateAgency.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,18 @@ namespace RealEstateAgency.WebUI.Controllers
 
         public ViewResult List(int page = 1)
         {
-            return View(repository.Offers.OrderBy(o=>o.Id).Skip((page-1)*pageSize).Take(pageSize));
+            OfferListViewModel model = new OfferListViewModel
+            {
+                Offers = repository.Offers.OrderBy(o => o.Id).Skip((page - 1) * pageSize).Take(pageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    TotalItems = repository.Offers.Count()
+                }
+
+            };
+            return View(model);
         }
     }
 }

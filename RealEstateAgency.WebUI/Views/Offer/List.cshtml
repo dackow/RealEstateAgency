@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RealEstateAgency.Domain.Entities.Offer>
+﻿@model RealEstateAgency.WebUI.Models.OfferListViewModel
 
 @{
     ViewBag.Title = "Offers";
@@ -6,7 +6,7 @@
 
 <h2>List</h2>
 
-@foreach (var o in Model)
+@foreach (var o in Model.Offers)
 {
     <div>
         <h3>@o.Name</h3>
@@ -14,4 +14,8 @@
         @o.Description
     </div>
 }
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, x=>Url.Action("List", new { page = x }))
+</div>
 
