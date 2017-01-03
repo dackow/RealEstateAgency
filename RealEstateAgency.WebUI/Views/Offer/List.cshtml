@@ -8,10 +8,28 @@
 
 @foreach (var o in Model.Offers)
 {
-    <div>
-        <h3>@o.Name</h3>
-        <h4>@o.Price.ToString("c")</h4>
-        @o.Description
+    <div class="well">
+        <div class="row">
+            <h3>
+                @if (o.Category == "M")
+                {
+                    <span class="pull-left label label-danger">Mieszkanie</span>
+                }
+                else if (o.Category == "D")
+                {
+                    <span class="pull-left label label-warning">Dom</span>
+                }
+
+                <span class="pull-right label label-primary">@o.Price.ToString("c")</span>
+            </h3>
+        </div>
+        <div class="row">
+            <h3>
+                    <strong>@o.Name</strong>
+                </h3>
+        </div>
+        
+        <span class="lead">@o.Description</span>
     </div>
 }
 

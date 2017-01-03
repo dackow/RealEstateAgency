@@ -5,13 +5,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - @Resources.APP_NAME_FULL</title>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />    
 </head>
 <body>
-    @RenderBody()
+    <div class="navbar" role="navigation">
+        <a class="navbar-brand" href="#">Cztery Pokoje</a>
+    </div>
+    <div class="row panel">
+        <div id="categories" class="col-md-3">
+            Kategorie
+        </div>
+        <div class="col-md-6">
+            @RenderBody()
+        </div>
+    </div>
+    
     <!--<div class="container-fluid">
        <nav class="navbar navbar-default">
            <div class="navbar-header">
