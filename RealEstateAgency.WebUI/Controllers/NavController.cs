@@ -24,5 +24,15 @@ namespace RealEstateAgency.WebUI.Controllers
                                                 OrderBy(x => x);
             return PartialView(categories);
         }
+
+        public PartialViewResult TopMenu(string category = null)
+        {
+            ViewBag.SelectedCategory = category;
+            IEnumerable<string> categories = repository.Offers.
+                                                Select(x => x.Category).
+                                                Distinct().
+                                                OrderBy(x => x);
+            return PartialView(categories);
+        }
     }
 }
