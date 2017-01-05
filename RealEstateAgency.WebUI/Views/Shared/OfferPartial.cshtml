@@ -1,0 +1,26 @@
+﻿@model RealEstateAgency.Domain.Entities.Offer
+
+<div class="well">
+    <div class="row">
+        <h3>
+            @if (Model.Category == "M")
+            {
+                <span class="pull-left label label-danger">Mieszkanie</span>
+            }
+            else if (Model.Category == "D")
+            {
+                <span class="pull-left label label-warning">Dom</span>
+            }
+
+            <span class="pull-right label label-primary">@Model.Price.ToString("c")</span>
+        </h3>
+    </div>
+    <div class="row">
+        <h3>
+            <strong>@Model.Name</strong>
+        </h3>
+    </div>
+
+    <span class="lead">@Model.Description</span>
+</div>
+

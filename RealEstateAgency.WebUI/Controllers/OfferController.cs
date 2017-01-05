@@ -24,17 +24,22 @@ namespace RealEstateAgency.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
             OfferListViewModel model = new OfferListViewModel
             {
-                Offers = repository.Offers.OrderBy(o => o.Id).Skip((page - 1) * pageSize).Take(pageSize),
+                Offers = repository.Offers.
+                                    Where(o=> category == null || o.Category == category).
+                                    OrderBy(o => o.Id).
+                                    Skip((page - 1) * pageSize).
+                                    Take(pageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = repository.Offers.Count()
-                }
+                    TotalItems = category == null ?  repository.Offers.Count() : repository.Offers.Where(o=> o.Category == category).Count()
+                },
+                CurrentCategory = category
 
             };
             return View(model);

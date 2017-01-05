@@ -77,5 +77,32 @@ namespace RealEstateAgency.WebUI.Properties {
                 return ResourceManager.GetString("APP_NAME_FULL", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domy.
+        /// </summary>
+        public static string D {
+            get {
+                return ResourceManager.GetString("D", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mieszkania.
+        /// </summary>
+        public static string M {
+            get {
+                return ResourceManager.GetString("M", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Działki.
+        /// </summary>
+        public static string N {
+            get {
+                return ResourceManager.GetString("N", resourceCulture);
+            }
+        }
     }
 }

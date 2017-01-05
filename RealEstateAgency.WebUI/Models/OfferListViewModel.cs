@@ -10,5 +10,7 @@ namespace RealEstateAgency.WebUI.Models
     {
         public IEnumerable<Offer> Offers { get; set; }
         public PagingInfo PagingInfo { get; set; }
+
+        public string CurrentCategory { get; set; }
     }
 }

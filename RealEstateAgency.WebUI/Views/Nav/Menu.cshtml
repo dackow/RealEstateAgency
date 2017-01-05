@@ -1,0 +1,16 @@
+﻿@model IEnumerable<string>
+@using RealEstateAgency.WebUI.Properties
+
+@Html.ActionLink("Strona główna", "List", "Offer", null, new { @class = "btn btn-block btn-default btn-lg"})
+
+@foreach (var link in Model)
+{
+    @Html.RouteLink(Resources.ResourceManager.GetString(link), new
+{
+    controller = "Offer",
+    action = "List",
+    category = link,
+    page = 1
+},
+    new { @class = "btn btn-block btn-default btn-lg " + (link == ViewBag.SelectedCategory ? "btn-primary" : "")})
+}
