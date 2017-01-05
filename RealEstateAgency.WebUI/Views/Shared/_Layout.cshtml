@@ -7,6 +7,8 @@
     <title>@ViewBag.Title - @Resources.APP_NAME_FULL</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Social.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -35,13 +37,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-1"></div>
-
-        
-        <div class="col-md-1"></div>
-    </div>
-
     @*<div class="row panel">
         <div class="col-md-1"></div>
         <div id="categories" class="col-md-3">
@@ -53,6 +48,7 @@
         <div class="col-md-1"></div>
     </div>*@
     
+    <!-- main content -->
     <div class="row panel">
         <div class="col-md-1"></div>
         <div class="col-md-10">
@@ -60,7 +56,24 @@
         </div>
         <div class="col-md-1"></div>
     </div>
+    <!-- end of main content -->
 
-    
+    <!-- footer with social icons -->
+    <div class="container">
+        <div class="row">
+
+            <div class="navbar navbar-inverse navbar-custom" style="padding-top:5px; padding-bottom:5px; color:#9D9D9D">
+                <span class="text-center" style="padding-left:3px">Cztery Pokoje &copy;2017. Wszystkie prawa zastrzeżone.</span>
+                
+                <ul class="social-icon animate pull-right">
+                    <li><a href="#" title="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li> <!-- change the link to social page and edit title-->
+                    <li><a href="#" title="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" title="google plus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end of footer with social icons -->
+     
 </body>
 </html>
