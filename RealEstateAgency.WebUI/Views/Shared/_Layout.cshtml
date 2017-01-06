@@ -9,7 +9,20 @@
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/Social.css" rel="stylesheet" />
-   
+    
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>  
+    <script src="~/Scripts/ReadEstate.js"></script>
+
+    <!-- displys selected value in drop down-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.dropdown-toggle').dropdown();
+            $('.mydropdown li > a').click(function () {
+                $('#text').text($(this).html());
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -43,9 +56,39 @@
     <!-- main content -->
         <div class="row panel">
             <div class="col-md-1"></div>
-            <div id="categories" class="col-md-3">
-                @Html.Action("SearchCriteria", "Search")
-            </div>
+            <div id="search_criteria" class="col-md-3">
+                @*@Html.Action("SearchCriteria", "Search")*@
+                <form>
+                    <div class="form-group">
+                        <label for="category">Rodzaj nieruchomości:</label>
+
+                        <ul class="nav nav-pills left">
+                            <li class="dropdown active mydropdown">
+                                <a class="dropdown-toggle" id="category" data-toggle="dropdown">
+                                    <i class="icon icon-envelope icon-white"></i>
+                                    <span id="text">Wybierz...</span><span class="caret"></span>
+                                </a>
+                                <ul ID="category" class="dropdown-menu">
+                                    <li><a>Mieszkania</a></li>
+                                    <li><a>Domy</a></li>
+                                    <li><a>Działki</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        @*<input type="email" class="form-control" id="email">*@
+                    </div>
+                    @*<div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>*@
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div> 
+            <!-- end of search_criteria -->
             <div class="col-md-7">
                 @RenderBody()
             </div>
