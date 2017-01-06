@@ -88,6 +88,24 @@ namespace RealEstateAgency.WebUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Garaże.
+        /// </summary>
+        public static string G {
+            get {
+                return ResourceManager.GetString("G", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokale użytkowe.
+        /// </summary>
+        public static string L {
+            get {
+                return ResourceManager.GetString("L", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mieszkania.
         /// </summary>
         public static string M {
@@ -97,11 +115,20 @@ namespace RealEstateAgency.WebUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Działki.
+        ///   Looks up a localized string similar to Działki lub grunty.
         /// </summary>
         public static string N {
             get {
                 return ResourceManager.GetString("N", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pokoje.
+        /// </summary>
+        public static string P {
+            get {
+                return ResourceManager.GetString("P", resourceCulture);
             }
         }
     }

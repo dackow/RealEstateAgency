@@ -1,4 +1,6 @@
 ﻿@using RealEstateAgency.WebUI.Properties
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +23,49 @@
             $('.mydropdown li > a').click(function () {
                 $('#text').text($(this).html());
             });
+
+            function hideAll() {
+                $("#mieszkanie").hide();
+                $("#dom").hide();
+                $("#dzialka").hide();
+                $("#garaz").hide();
+                $("#lokal").hide();
+                $("#pokoj").hide();
+            }
+
+            function displayFirst() {
+                $("#mieszkanie").show();
+            }
+            hideAll();
+            displayFirst();
+            
+            $("#category").on("change", function () {
+                hideAll();
+                switch ($("#category option:selected").index())
+                {
+                    case 0:
+                        $("#mieszkanie").show();
+                        break;
+                    case 1:
+                        $("#dom").show();
+                        break;
+                    case 2:
+                        $("#dzialka").show();
+                        break;
+                    case 3:
+                        $("#garaz").show();
+                        break;
+                    case 4:
+                        $("#lokal").show();
+                        break;
+                    case 5:
+                        $("#pokoj").show();
+                        break;
+                }                
+            });
         });
+
+        
     </script>
 </head>
 <body>
@@ -54,45 +98,172 @@
         </div>
     </div>
     <!-- main content -->
+
+    <!-- search criteria -->
+    <div class="container center-block">
+        <form class="form-horizontal">
+            <fieldset>
+                <!-- Form Name -->
+                <legend style="text-align:center">Wyszukiwanie nieruchomości</legend>
+                <!-- search by category -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="category">Rodzaj nieruchomości:</label>
+                    <div class="col-md-4">
+                        <select id="category" name="category" class="form-control">
+                            <option value="M">Mieszkanie</option>
+                            <option value="D">Dom</option>
+                            <option value="N">Działka lub grunt</option>
+                            <option value="G">Garaże</option>
+                            <option value="L">Lokale użytkowe</option>
+                            <option value="P">Pokoje</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--   MIESZKANIE -->
+                <div id="mieszkanie">
+                    <!-- search by rynek-->
+                    @RealEstateHelpers.MakeDropDown("Rynek:", new Dictionary<string, string> { { "P", "pierwotny" }, { "W", "wtórny" } }, "m_market", "m_market"))
+                    @*<div class="form-group">
+                        <label class="col-md-4 control-label" for="category">Rynek:</label>
+                        <div class="col-md-4">
+                            <select id="m_category" name="m_category" class="form-control">
+                                <option value="P">pierwotny</option>
+                                <option value="W">wtórny</option>
+                            </select>
+                        </div>
+                    </div>*@
+
+                    <div id="price_group">
+                        <!-- search by price-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="m_price_min">Cena:</label>
+                            <div class="col-md-2">
+                                <input id="m_price_min" name="m_price_min" type="text" placeholder="np. 0" class="form-control input-md">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="m_price_max"></label>
+                            <div class="col-md-2">
+                                <input id="m_price_max" name="m_price_max" type="text" placeholder="np. 200000" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "m_location", "m_location")
+
+                    <!-- search by location-->
+                    @*<div class="form-group">
+                        <label class="col-md-4 control-label" for="m_location">Miejscowość</label>
+                        <div class="col-md-4">
+                            <input id="m_location" name="m_location" type="text" placeholder="np.Rzeszów" class="form-control input-md">
+                        </div>
+                    </div>*@
+
+                    <!-- search by area-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="m_area_min">Powierzchnia w m<sup>2</sup>:</label>
+                        <div class="col-md-2">
+                            <input id="m_area_min" name="m_area_min" type="text" placeholder="np. 0" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="m_area_max"></label>
+                        <div class="col-md-2">
+                            <input id="m_area_max" name="m_area_max" type="text" placeholder="np. 120" class="form-control input-md">
+                        </div>
+                    </div>
+
+                    <!-- search by room number -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="m_room_min">Liczba pokoi:</label>
+                        <div class="col-md-2">
+                            <input id="m_room_min" name="m_room_min" type="text" placeholder="np. 2" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="m_room_max"></label>
+                        <div class="col-md-2">
+                            <input id="m_room_max" name="m_room_max" type="text" placeholder="np. 5" class="form-control input-md">
+                        </div>
+                    </div>
+
+                    <!-- search by offer time-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="m_time">Pokaż oferty z:</label>
+                        <div class="col-md-4">
+                            <select id="m_category" name="m_category" class="form-control">
+                                <option value="0">-</option>
+                                <option value="1">ostatnich 24 godzin</option>
+                                <option value="2">ostatnich 7 dni</option>
+                                <option value="3">ostatniego miesiąca</option>
+                                <option value="4">ostatnich 3 miesięcy</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> <!-- end od MIESZKANIE -->
+                
+                <div id="dom">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="category">Rodzaj działki:</label>
+                        <div class="col-md-4">
+                            <select id="category" name="category" class="form-control">
+                                <option value="M">Mieszkanie</option>
+                                <option value="D">Dom</option>
+                                <option value="">Działka lub grunt</option>
+                                <option value="2">Garaże</option>
+                                <option value="2">Lokale użytkowe</option>
+                                <option value="2">Pokoje</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><!-- end of DOM -->
+
+                <!-- DZIALKA -->
+                <div id="dzialka">
+                    DZIALKA
+                </div><!-- end of DZIALKA -->                
+                
+                <!-- GARAZ-->
+                <div id="garaz">
+                    GARAZ
+                </div><!-- end of GARAZ-->
+
+                <!-- LOKAL -->
+                <div id="garaz">
+                    LOKAL
+                </div><!-- end of GARAZ-->
+
+                <!-- POKOJ -->
+                <div id="pokoj">
+                    POKOJ
+                </div><!-- end of POKOJ -->
+                               
+
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- end of search criteria -->
+
         <div class="row panel">
             <div class="col-md-1"></div>
-            <div id="search_criteria" class="col-md-3">
-                @*@Html.Action("SearchCriteria", "Search")*@
-                <form>
-                    <div class="form-group">
-                        <label for="category">Rodzaj nieruchomości:</label>
-
-                        <ul class="nav nav-pills left">
-                            <li class="dropdown active mydropdown">
-                                <a class="dropdown-toggle" id="category" data-toggle="dropdown">
-                                    <i class="icon icon-envelope icon-white"></i>
-                                    <span id="text">Wybierz...</span><span class="caret"></span>
-                                </a>
-                                <ul ID="category" class="dropdown-menu">
-                                    <li><a>Mieszkania</a></li>
-                                    <li><a>Domy</a></li>
-                                    <li><a>Działki</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                        @*<input type="email" class="form-control" id="email">*@
-                    </div>
-                    @*<div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
-                    </div>*@
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div> 
-            <!-- end of search_criteria -->
-            <div class="col-md-7">
+            <div class="col-md-10">
                 @RenderBody()
             </div>
             <div class="col-md-1"></div>
+            @*<div id="search_criteria" class="col-md-3">*@
+                @*@Html.Action("SearchCriteria", "Search")*@
+                
+               
+
+            @*  </div>
+            <!-- end of search_criteria -->
+            @*<div class="col-md-7">
+                @RenderBody()
+            </div>*@
+            @*<div class="col-md-1"></div>*@
         </div>   
 
     <!-- end of main content -->

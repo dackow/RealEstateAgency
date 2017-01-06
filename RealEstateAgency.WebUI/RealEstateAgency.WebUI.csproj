@@ -152,6 +152,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="App_Code\RealEstateHelpers.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropdowns-enhancement.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -182,6 +183,7 @@
     </Compile>
     <Compile Include="Helpers\ResourceHelper.cs" />
     <Compile Include="Helpers\WebConfigOptionsHelper.cs" />
+    <Compile Include="HtmlHelpers\ElementHelper.cs" />
     <Compile Include="HtmlHelpers\PagingHelper.cs" />
     <Compile Include="Models\OfferListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />

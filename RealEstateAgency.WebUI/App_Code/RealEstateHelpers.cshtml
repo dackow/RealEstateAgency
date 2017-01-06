@@ -1,0 +1,25 @@
+﻿@helper MakeTextEdit(string label, string placeholder, string id, string name = null)
+{
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="m_location">@label</label>
+        <div class="col-md-4">
+            <input id="@id" name="@(name == null ? id :name)" type="text" placeholder="@placeholder" class="form-control input-md">
+        </div>
+    </div>
+}
+
+@helper MakeDropDown(string label, Dictionary<string, string> values, string id, string name)
+{
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="category">@label</label>
+        <div class="col-md-4">
+            <select id="@id" name="@name" class="form-control">
+                @foreach (var value in values)
+                {
+                    <option value="@value.Key">@value.Value</option>
+                }                
+            </select>
+        </div>
+    </div>
+}
+

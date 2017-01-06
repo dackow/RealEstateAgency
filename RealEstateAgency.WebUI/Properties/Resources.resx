@@ -126,10 +126,19 @@
   <data name="D" xml:space="preserve">
     <value>Domy</value>
   </data>
+  <data name="G" xml:space="preserve">
+    <value>Garaże</value>
+  </data>
+  <data name="L" xml:space="preserve">
+    <value>Lokale użytkowe</value>
+  </data>
   <data name="M" xml:space="preserve">
     <value>Mieszkania</value>
   </data>
   <data name="N" xml:space="preserve">
-    <value>Działki</value>
+    <value>Działki lub grunty</value>
+  </data>
+  <data name="P" xml:space="preserve">
+    <value>Pokoje</value>
   </data>
 </root>
