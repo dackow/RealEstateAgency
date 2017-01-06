@@ -4,18 +4,21 @@
     <li class="active">
         <a href="#"><span class="glyphicon glyphicon-home"></span></a>
     </li>
-@foreach (var link in Model)
-{
-    <li>
-        @Html.RouteLink(Resources.ResourceManager.GetString(link), new
+    @foreach (var link in Model)
+    {
+        <li>
+            @Html.RouteLink(Resources.ResourceManager.GetString(link), new
    {
        controller = "Offer",
        action = "List",
        category = link,
        page = 1
-   }, link != ViewBag.SelectedCategory ? null : new { Style = "color:blue" })
-    
-    </li>
-}
-      
+   }, new { Style = "color:white " + (link != ViewBag.SelectedCategory ? "" : ";color:blue") })
+
+
+        </li>
+    }
+
+
+
 </ul>

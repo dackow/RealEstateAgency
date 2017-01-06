@@ -9,6 +9,7 @@
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/Social.css" rel="stylesheet" />
+   
 </head>
 <body>
     <div class="container">
@@ -19,51 +20,55 @@
             </div>
             <div class="col-md-6">
                 <form class="navbar-form navbar-right" role="search">
-                    <button type="button" class="btn btn-info">Kontakt: tel.: 502-304-426 e-mail: magdalena.dacko@gmail.com</button>
+                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 502-304-426 <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 509 808 144 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> magdalena.dacko@gmail.com</button>
                 </form>
             </div>
         </div>
 
         <div class="row">
-            <nav class="navbar navbar-inverse navbar-custom" role="navigation" style="background-color:#28a4c9;color:white">
+            <nav class="navbar btn-info" role="navigation">
                 @Html.Action("TopMenu", "Nav")
-                <ul class="nav navbar-nav navbar-right" style="margin-right:30px">
+
+
+
+                <ul class="nav navbar-nav navbar-right" style="margin-right:30px;color:#ffffff">
                     <li>
-                        <a href="#"><b>O nas...</b></a>
+                        <a href="#" style="color:white"><b>O nas...</b></a>
                     </li>
 
                 </ul>
             </nav>
         </div>
     </div>
+    <!-- main content -->
+        <div class="row panel">
+            <div class="col-md-1"></div>
+            <div id="categories" class="col-md-3">
+                @Html.Action("SearchCriteria", "Search")
+            </div>
+            <div class="col-md-7">
+                @RenderBody()
+            </div>
+            <div class="col-md-1"></div>
+        </div>   
+
+    <!-- end of main content -->
 
     @*<div class="row panel">
-        <div class="col-md-1"></div>
-        <div id="categories" class="col-md-3">
-            @Html.Action("Menu", "Nav")
-        </div>
-        <div class="col-md-7">
-            @RenderBody()
-        </div>
-        <div class="col-md-1"></div>
-    </div>*@
-    
-    <!-- main content -->
-    <div class="row panel">
         <div class="col-md-1"></div>
         <div class="col-md-10">
             @RenderBody()
         </div>
         <div class="col-md-1"></div>
-    </div>
-    <!-- end of main content -->
+    </div>*@
+
 
     <!-- footer with social icons -->
     <div class="container">
         <div class="row">
 
-            <div class="navbar navbar-inverse navbar-custom" style="padding-top:5px; padding-bottom:5px; color:#9D9D9D">
-                <span class="text-center" style="padding-left:3px">Cztery Pokoje &copy;2017. Wszystkie prawa zastrzeżone.</span>
+            <div class="navbar btn-info" style="padding-top:5px; padding-bottom:5px; color:#ffffff">
+                <span class="text-center" style="padding-left:3px">Cztery Pokoje &copy;@DateTime.Now.Year. Wszystkie prawa zastrzeżone.</span>
                 
                 <ul class="social-icon animate pull-right">
                     <li><a href="#" title="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li> <!-- change the link to social page and edit title-->

@@ -127,6 +127,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\NavStyle.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Social.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -172,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +200,7 @@
     <Content Include="Views\Shared\OfferPartial.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Nav\TopMenu.cshtml" />
+    <Content Include="Views\Search\SearchCriteria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
