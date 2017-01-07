@@ -13,5 +13,13 @@ namespace RealEstateAgency.Domain.Entities
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string Category { get; set; }
+        public string Offer_Type { get; set; }
+        public string Market { get; set; }
+        public string Location { get; set; }
+        public int Area { get; set; }
+        public int Rooms { get; set; }
+        public string Parcel_Type { get; set; }
+        public string Garage_Construction { get; set; }
+        public string Local_Purpose { get; set; }
     }
 }

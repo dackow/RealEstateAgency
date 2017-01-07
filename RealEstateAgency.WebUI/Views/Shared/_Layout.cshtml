@@ -25,16 +25,16 @@
             });
 
             function hideAll() {
-                $("#mieszkanie").hide();
-                $("#dom").hide();
-                $("#dzialka").hide();
-                $("#garaz").hide();
-                $("#lokal").hide();
-                $("#pokoj").hide();
+                $("#mieszkanie").remove();
+                $("#dom").remove();
+                $("#dzialka").remove();
+                $("#garaz").remove();
+                $("#lokal").remove();
+                $("#pokoj").remove();
             }
 
             function displayFirst() {
-                $("#mieszkanie").show();
+                $("#mieszkanie").append();
             }
             hideAll();
             displayFirst();
@@ -101,8 +101,8 @@
 
     <!-- search criteria -->
     <div class="container center-block">
-        <form class="form-horizontal">
-            <fieldset>
+        <form class="form-horizontal" >
+            <fieldset id="search_criteria">
                 <!-- Form Name -->
                 <legend style="text-align:center">Wyszukiwanie nieruchomości</legend>
                 @RealEstateHelpers.MakeDropDown("Rodzaj nieruchomości:",
@@ -123,13 +123,13 @@
                                                         { "K", "oferta kupna" },
                                                         { "Z", "oferta zamiany" },
                                                         { "W", "oferta wynajmu" }},
-                                                    "m_offer",
-                                                    "m_offer")
-                    @RealEstateHelpers.MakeDropDown("Rynek:", new Dictionary<string, string> { { "P", "pierwotny" }, { "W", "wtórny" } }, "m_market", "m_market")
-                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "m_price_min", "m_price_min", "np. 0", "m_price_max", "m_price_max", "np. 200000")
-                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "m_location", "m_location")
-                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "m_area_min", "m_area_min", "np. 40", "m_area_max", "m_area_max", "np. 120")
-                    @RealEstateHelpers.MakeTextEditBetween("Liczba pokoi:", "m_room_min", "m_room_min", "np. 2", "m_room_max", "m_room_max", "np. 4")
+                                                    "offer_type",
+                                                    "offer_type")
+                    @RealEstateHelpers.MakeDropDown("Rynek:", new Dictionary<string, string> { { "P", "pierwotny" }, { "W", "wtórny" } }, "market", "market")
+                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
+                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
+                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
+                    @RealEstateHelpers.MakeTextEditBetween("Liczba pokoi:", "room_min", "room_min", "np. 2", "room_max", "room_max", "np. 4")
                     
                 </div> <!-- end od MIESZKANIE -->
                 
@@ -140,13 +140,13 @@
                                                         { "K", "oferta kupna" },
                                                         { "Z", "oferta zamiany" },
                                                         { "W", "oferta wynajmu" }},
-                                                    "d_offer",
-                                                    "d_offer")
-                    @RealEstateHelpers.MakeDropDown("Rynek:", new Dictionary<string, string> { { "P", "pierwotny" }, { "W", "wtórny" } }, "d_market", "d_market")
-                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "d_price_min", "d_price_min", "np. 0", "d_price_max", "d_price_max", "np. 200000")
-                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "d_location", "d_location")
-                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "d_area_min", "d_area_min", "np. 40", "d_area_max", "d_area_max", "np. 120")
-                    @RealEstateHelpers.MakeTextEditBetween("Liczba pokoi:", "d_rood_min", "d_rood_min", "np. 2", "d_rood_max", "d_rood_max", "np. 4")
+                                                    "offer_type",
+                                                    "offer_type")
+                    @RealEstateHelpers.MakeDropDown("Rynek:", new Dictionary<string, string> { { "P", "pierwotny" }, { "W", "wtórny" } }, "market", "market")
+                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
+                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
+                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
+                    @RealEstateHelpers.MakeTextEditBetween("Liczba pokoi:", "room_min", "room_min", "np. 2", "room_max", "room_max", "np. 4")
                 
                 </div><!-- end of DOM -->
 
@@ -158,11 +158,11 @@
                                                         { "K", "oferta kupna" },
                                                         { "Z", "oferta zamiany" },
                                                         { "W", "oferta wynajmu" }},
-                                                    "n_offer",
-                                                    "n_offer")
-                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "n_price_min", "n_price_min", "np. 0", "n_price_max", "n_price_max", "np. 200000")
-                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "n_location", "n_location")
-                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "n_area_min", "n_area_min", "np. 40", "n_area_max", "n_area_max", "np. 120")
+                                                    "offer_type",
+                                                    "offer_type")
+                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
+                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
+                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
                     @RealEstateHelpers.MakeDropDown("Rodzaj działki:",
                                                     new Dictionary<string, string> {
                                                       {"B", "budowlana"},
@@ -172,8 +172,8 @@
                                                       {"P","przemysłowa"},
                                                       {"L","leśna"},
                                                       {"O","rolno-budowlana"}},
-                                                    "n_type",
-                                                    "n_type")
+                                                    "parcel_type",
+                                                    "parcel_type")
 
 
                 </div><!-- end of DZIALKA -->                
@@ -186,19 +186,19 @@
                                                         { "K", "oferta kupna" },
                                                         { "Z", "oferta zamiany" },
                                                         { "W", "oferta wynajmu" }},
-                                                    "g_offer",
-                                                    "g_offer")
-                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "g_price_min", "g_price_min", "np. 0", "g_price_max", "g_price_max", "np. 200000")
-                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "g_location", "g_location")
-                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "g_area_min", "g_area_min", "np. 40", "g_area_max", "g_area_max", "np. 120")
+                                                    "offer_type",
+                                                    "offer_type")
+                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
+                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
+                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
                     @RealEstateHelpers.MakeDropDown("Konstrukcja:",
                                                     new Dictionary<string, string> {
                                                         {"B", "blaszak"},
                                                         {"M", "murowany"},
                                                         {"P", "pod budynkiem"},
                                                         {"W", "wiata"}},
-                                                    "g_construction",
-                                                    "g_construction")
+                                                    "garage_construction",
+                                                    "garage_construction")
                 </div><!-- end of GARAZ-->
 
                 <!-- LOKAL -->
@@ -209,11 +209,11 @@
                                                         { "K", "oferta kupna" },
                                                         { "Z", "oferta zamiany" },
                                                         { "W", "oferta wynajmu" }},
-                                                    "l_offer",
-                                                    "l_offer")
-                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "l_price_min", "l_price_min", "np. 0", "l_price_max", "l_price_max", "np. 200000")
-                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "l_location", "l_location")
-                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "l_area_min", "l_area_min", "np. 40", "l_area_max", "l_area_max", "np. 120")
+                                                    "offer_type",
+                                                    "offer_type")
+                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
+                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
+                    @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
                     @RealEstateHelpers.MakeDropDown("Przeznaczenie:",
                                                     new Dictionary<string, string> {
                                                         {"0","-"},
@@ -221,31 +221,33 @@
                                                         {"2","hale i magazyny"},
                                                         {"3","handel i usługi"},
                                                         {"4","przemysł i produkcja"} },
-                                                    "l_destination",
-                                                    "l_destination")
+                                                    "local_purpose",
+                                                    "local_purpose")
                 </div><!-- end of GARAZ-->
 
                 <!-- POKOJ -->
                 <div id="pokoj">
-                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "p_price_min", "p_price_min", "np. 0", "p_price_max", "p_price_max", "np. 200000")
-                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "p_location", "p_location")
+                    @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
+                    @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
                </div><!-- end of POKOJ -->
 
 
                 @RealEstateHelpers.MakeDropDown("Pokaż oferty z:", new Dictionary<string, string> { { "0", "-" }, { "1", "ostatnich 24 godzin" }, { "2", "ostatnich 7 dni" }, { "3", "ostatniego miesiąca" }, { "4", "ostatnich 3 miesięcy" } }, "time", "time")               
-
+                <button class="btn btn-lg btn-primary center-block" type="submit">Szukaj</button>
             </fieldset>
+            
         </form>
     </div>
 
     <!-- end of search criteria -->
-
+        <br />
         <div class="row panel">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 @RenderBody()
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-2"></div>
             @*<div id="search_criteria" class="col-md-3">*@
                 @*@Html.Action("SearchCriteria", "Search")*@
                 
