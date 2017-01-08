@@ -14,6 +14,13 @@ namespace RealEstateAgency.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                 name: null,
+                url: "Admin",
+                defaults: new { controller = "Admin", action = "Index"}
+            );
+
+
+            routes.MapRoute(
                 name: null,
                 url: "",
                 defaults: new { controller = "Offer", action = "List", category = (string)null, page = 1 }

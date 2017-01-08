@@ -1,0 +1,100 @@
+﻿@model IEnumerable<RealEstateAgency.Domain.Entities.Offer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Offer_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Market)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcel_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Garage_Construction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Local_Purpose)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Offer_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Market)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parcel_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Garage_Construction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Local_Purpose)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

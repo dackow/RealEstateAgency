@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency.Domain.Abstract;
+using RealEstateAgency.Domain.Entities;
 using RealEstateAgency.WebUI.Helpers;
 using RealEstateAgency.WebUI.Models;
 using System;
@@ -44,5 +45,6 @@ namespace RealEstateAgency.WebUI.Controllers
             };
             return View(model);
         }
+        
     }
 }

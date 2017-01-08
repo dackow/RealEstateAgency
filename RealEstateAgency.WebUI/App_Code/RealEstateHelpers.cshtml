@@ -1,8 +1,8 @@
 ﻿@helper MakeTextEdit(string label, string placeholder, string id, string name = null)
 {
     <div class="form-group">
-        <label class="col-md-4 control-label" for="m_location">@label</label>
-        <div class="col-md-4">
+        <label class="col-md-6 control-label" for="m_location">@label</label>
+        <div class="col-md-6">
             <input id="@id" name="@(name == null ? id :name)" type="text" placeholder="@placeholder" class="form-control input-md">
         </div>
     </div>
@@ -11,8 +11,8 @@
 @helper MakeDropDown(string label, Dictionary<string, string> values, string id, string name)
 {
     <div class="form-group">
-        <label class="col-md-4 control-label" for="category">@label</label>
-        <div class="col-md-4">
+        <label class="col-md-6 control-label" for="category">@label</label>
+        <div class="col-md-6">
             <select id="@id" name="@name" class="form-control">
                 @foreach (var value in values)
                 {
@@ -26,15 +26,15 @@
 @helper MakeTextEditBetween(string label, string id_min, string name_min, string placeholder_min,string id_max, string name_max, string placeholder_max)     
 {
 <div class="form-group">
-    <label class="col-md-4 control-label" for="@name_min">@label</label>
-    <div class="col-md-2">
+    <label class="col-md-6 control-label" for="@name_min">@label</label>
+    <div class="col-md-6">
         <input id="@id_min" name="@name_min" type="text" placeholder="@placeholder_min" class="form-control input-md">
     </div>
 </div>
 
 <div class="form-group">
-    <label class="col-md-4 control-label" for="@name_max"></label>
-    <div class="col-md-2">
+    <label class="col-md-6 control-label" for="@name_max"></label>
+    <div class="col-md-6">
         <input id="@id_max" name="@name_max" type="text" placeholder="@placeholder_max" class="form-control input-md">
     </div>
 </div>
