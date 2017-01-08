@@ -40,7 +40,7 @@ namespace RealEstateAgency.WebUI.Controllers
             }
             else
             {
-                return View(product);
+                return View(offer);
             }
         }
     }
