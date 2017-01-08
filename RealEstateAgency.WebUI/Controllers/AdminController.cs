@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency.Domain.Abstract;
+using RealEstateAgency.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,27 @@ namespace RealEstateAgency.WebUI.Controllers
         public ActionResult Index()
         {
             return View(repository.Offers);
+        }
+
+        public ViewResult Edit(int Id)
+        {
+            Offer offer = repository.Offers.FirstOrDefault(o => o.Id == Id);
+            return View(offer);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Offer offer)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveOffer(offer);
+                TempData["message"] = string.Format("{0} has been saved", offer.Name);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(product);
+            }
         }
     }
 }

@@ -7,94 +7,44 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Offer_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Market)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Area)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rooms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Parcel_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Garage_Construction)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Local_Purpose)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Offer_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Market)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Area)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rooms)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Parcel_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Garage_Construction)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Local_Purpose)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div>Wszystkie oferty</div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-right">ID</th>
+                <th>Tytuł</th>
+                <th class="text-right">Cena</th>
+                <th class="text-center">Akcje</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-right">@item.Id</td>
+                    <td>
+                        @Html.ActionLink(item.Name, "Edit", new { item.Id})
+                    </td>
+                    <td class="text-right">@item.Price.ToString("c")</td>
+                    <td class="text-center">
+                        @using (Html.BeginForm("Usuń", "Admin"))
+                        {
+                            @Html.Hidden("OfferId", item.Id)
+                            <input type="submit" class="btn btn-default btn-xs" value="Usuń" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        @Html.ActionLink("Dodaj oferte...", "Create", null, new { @class = "btn btn-default"})
+    </div>
+</div>
+
 
 </table>

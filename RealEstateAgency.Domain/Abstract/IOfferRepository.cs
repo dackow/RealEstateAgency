@@ -10,5 +10,6 @@ namespace RealEstateAgency.Domain.Abstract
     public interface IOfferRepository
     {
         IEnumerable<Offer> Offers { get; }
+        void SaveOffer(Offer offer);
     }
 }
