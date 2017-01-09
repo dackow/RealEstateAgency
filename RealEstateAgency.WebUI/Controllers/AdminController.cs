@@ -1,5 +1,7 @@
 ﻿using RealEstateAgency.Domain.Abstract;
 using RealEstateAgency.Domain.Entities;
+using RealEstateAgency.Domain.Setup;
+using RealEstateAgency.WebUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace RealEstateAgency.WebUI.Controllers
     public class AdminController : Controller
     {
         IOfferRepository repository;
-
+        
 
         public AdminController(IOfferRepository repo)
         {
@@ -26,6 +28,12 @@ namespace RealEstateAgency.WebUI.Controllers
         public ViewResult Edit(int Id)
         {
             Offer offer = repository.Offers.FirstOrDefault(o => o.Id == Id);
+            ViewBag.categories = DropDownListHelper.GenerateDataToDropDown(Setups.GetInstance().CATEGORIES, offer.Category);
+            ViewBag.offer_types = DropDownListHelper.GenerateDataToDropDown(Setups.GetInstance().OFFER_TYPES, offer.Offer_Type);
+            ViewBag.markets = DropDownListHelper.GenerateDataToDropDown(Setups.GetInstance().MARKETS, offer.Market);
+            ViewBag.parcel_types = DropDownListHelper.GenerateDataToDropDown(Setups.GetInstance().PARCEL_TYPES, offer.Parcel_Type);
+            ViewBag.garage_construction = DropDownListHelper.GenerateDataToDropDown(Setups.GetInstance().GARAGE_CONSTRUCTIONS, offer.Garage_Construction);
+            ViewBag.local_purpose = DropDownListHelper.GenerateDataToDropDown(Setups.GetInstance().LOCAL_PURPOSE, offer.Local_Purpose);
             return View(offer);
         }
 

@@ -182,10 +182,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DropDownListHelper.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
     <Compile Include="Helpers\WebConfigOptionsHelper.cs" />
-    <Compile Include="HtmlHelpers\ElementHelper.cs" />
-    <Compile Include="HtmlHelpers\PagingHelper.cs" />
+    <Compile Include="Helpers\ElementHelper.cs" />
+    <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Models\OfferListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

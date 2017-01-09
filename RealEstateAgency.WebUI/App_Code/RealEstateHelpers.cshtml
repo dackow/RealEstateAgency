@@ -39,3 +39,23 @@
     </div>
 </div>
 }
+
+@helper LegendaHelper(Dictionary<string, string> dict)
+{
+    foreach (var item in dict)
+    {
+        <div>[<b>@item.Key</b>-@item.Value]</div>
+    }
+}
+
+@helper Truncate(string input, int length)
+{
+if (input.Length <= length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>...</text>
+}
+} 

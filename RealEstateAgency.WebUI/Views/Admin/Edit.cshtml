@@ -1,4 +1,5 @@
 ﻿@model RealEstateAgency.Domain.Entities.Offer
+@using RealEstateAgency.Domain.Setup
 
 @{
     ViewBag.Title = "Edit";
@@ -48,7 +49,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form -control", Title = "M-mieszkanie,D-dom,N-działka lub grunt,G-garaż,L-lokal użytkowy,P-pokój" } })
+                @Html.DropDownListFor(model => model.Category, (List<SelectListItem>) ViewBag.categories, new { htmlAttributes = new { @class = "form -control", Title = "M-mieszkanie,D-dom,N-działka lub grunt,G-garaż,L-lokal użytkowy,P-pokój" } })
+                @*@Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form -control", Title = "M-mieszkanie,D-dom,N-działka lub grunt,G-garaż,L-lokal użytkowy,P-pokój" } })*@
+                @*@RealEstateHelpers.LegendaHelper(Setups.GetInstance().CATEGORIES)*@
                 @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -56,7 +59,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Offer_Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Offer_Type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Offer_Type, (List<SelectListItem>)ViewBag.offer_types, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Offer_Type, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@RealEstateHelpers.LegendaHelper(Setups.GetInstance().OFFER_TYPES)*@
                 @Html.ValidationMessageFor(model => model.Offer_Type, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -64,7 +69,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Market, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Market, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Market, (List<SelectListItem>)ViewBag.markets, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Market, new { htmlAttributes = new { @class = "form-control" } })
+                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().MARKETS)*@
                 @Html.ValidationMessageFor(model => model.Market, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -96,7 +103,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Parcel_Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Parcel_Type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Parcel_Type, (List<SelectListItem>)ViewBag.parcel_types, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Parcel_Type, new { htmlAttributes = new { @class = "form-control" } })
+                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().PARCEL_TYPES)*@
                 @Html.ValidationMessageFor(model => model.Parcel_Type, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -104,7 +113,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Garage_Construction, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Garage_Construction, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Garage_Construction, (List<SelectListItem>)ViewBag.garage_constructions, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Garage_Construction, new { htmlAttributes = new { @class = "form-control" } })
+                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().GARAGE_CONSTRUCTIONS)*@
                 @Html.ValidationMessageFor(model => model.Garage_Construction, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -112,7 +123,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Local_Purpose, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Local_Purpose, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Local_Purpose, (List<SelectListItem>)ViewBag.local_purposes, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Local_Purpose, new { htmlAttributes = new { @class = "form-control" } })
+                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().LOCAL_PURPOSE)*@
                 @Html.ValidationMessageFor(model => model.Local_Purpose, "", new { @class = "text-danger" })
             </div>
         </div>
