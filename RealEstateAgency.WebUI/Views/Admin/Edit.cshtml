@@ -13,6 +13,8 @@
 </div>
 
 
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -66,7 +68,8 @@
             </div>
         </div>
 
-        <div class="form-group">
+
+        <div id="market" class="form-group">
             @Html.LabelFor(model => model.Market, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Market, (List<SelectListItem>)ViewBag.markets, new { htmlAttributes = new { @class = "form-control" } })
@@ -84,7 +87,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div id="area"class="form-group">
             @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
                 @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
@@ -92,7 +95,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div id="rooms" class="form-group">
             @Html.LabelFor(model => model.Rooms, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
                 @Html.EditorFor(model => model.Rooms, new { htmlAttributes = new { @class = "form-control" } })
@@ -100,7 +103,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div id="parcel_type" class="form-group">
             @Html.LabelFor(model => model.Parcel_Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Parcel_Type, (List<SelectListItem>)ViewBag.parcel_types, new { htmlAttributes = new { @class = "form-control" } })
@@ -110,7 +113,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div id="garage_construction" class="form-group">
             @Html.LabelFor(model => model.Garage_Construction, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Garage_Construction, (List<SelectListItem>)ViewBag.garage_constructions, new { htmlAttributes = new { @class = "form-control" } })
@@ -120,7 +123,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div id="local_purpose" class="form-group">
             @Html.LabelFor(model => model.Local_Purpose, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Local_Purpose, (List<SelectListItem>)ViewBag.local_purposes, new { htmlAttributes = new { @class = "form-control" } })

@@ -11,5 +11,6 @@ namespace RealEstateAgency.Domain.Abstract
     {
         IEnumerable<Offer> Offers { get; }
         void SaveOffer(Offer offer);
+        Offer DeleteOffer(int id);
     }
 }

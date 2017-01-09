@@ -43,7 +43,7 @@ namespace RealEstateAgency.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 repository.SaveOffer(offer);
-                TempData["message"] = string.Format("{0} has been saved", offer.Name);
+                TempData["message"] = string.Format("Oferta '{0}' została zapisana", offer.Name);
                 return RedirectToAction("Index");
             }
             else
@@ -83,6 +83,16 @@ namespace RealEstateAgency.WebUI.Controllers
                 ViewBag.local_purpose = DropDownListHelper.GenerateDataToDropDown(Setups.GetInstance().LOCAL_PURPOSE, offer.Local_Purpose);
                 return View(offer);
             }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Offer offer = repository.DeleteOffer(id);
+            if (offer != null)
+            {
+                TempData["message"] = string.Format("Oferta '{0}' została usunięta", offer.Name);
+            }
+            return RedirectToAction("Index");
         }
 
     }

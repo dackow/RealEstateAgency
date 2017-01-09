@@ -1,4 +1,5 @@
 ﻿@using RealEstateAgency.WebUI.Properties
+@using RealEstateAgency.Domain.Setup
 
 
 <!DOCTYPE html>
@@ -109,28 +110,13 @@
                     <fieldset>
                         <!-- Form Name -->
                         @*<legend style="text-align:center">Wyszukiwanie nieruchomości</legend>*@
-                        @RealEstateHelpers.MakeDropDown("Rodzaj nieruchomości:",
-                                                new Dictionary<string, string> {
-                                                    { "M", "mieszkanie" },
-                                                    { "D", "dom" },
-                                                    { "N", "działka lub grunt" },
-                                                    { "G", "garaż"},
-                                                    { "L", "lokal użytkowy"},
-                                                    { "P", "pokój"} }
-                                                , "category", "category")
+                        @RealEstateHelpers.MakeDropDown("Rodzaj nieruchomości:", Setups.GetInstance().CATEGORIES , "category", "category")
 
                         <div id="search_criteria">
                             <!--   MIESZKANIE -->
                             <div id="mieszkanie">
-                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:",
-                                                    new Dictionary<string, string> {
-                                                        { "S", "oferta sprzedaży" },
-                                                        { "K", "oferta kupna" },
-                                                        { "Z", "oferta zamiany" },
-                                                        { "W", "oferta wynajmu" }},
-                                                    "offer_type",
-                                                    "offer_type")
-                                @RealEstateHelpers.MakeDropDown("Rynek:", new Dictionary<string, string> { { "P", "pierwotny" }, { "W", "wtórny" } }, "market", "market")
+                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:", Setups.GetInstance().OFFER_TYPES,"offer_type","offer_type")
+                                @RealEstateHelpers.MakeDropDown("Rynek:", Setups.GetInstance().MARKETS, "market", "market")
                                 @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
                                 @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
                                 @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
@@ -139,15 +125,8 @@
                             </div> <!-- end od MIESZKANIE -->
 
                             <div id="dom">
-                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:",
-                                                    new Dictionary<string, string> {
-                                                        { "S", "oferta sprzedaży" },
-                                                        { "K", "oferta kupna" },
-                                                        { "Z", "oferta zamiany" },
-                                                        { "W", "oferta wynajmu" }},
-                                                    "offer_type",
-                                                    "offer_type")
-                                @RealEstateHelpers.MakeDropDown("Rynek:", new Dictionary<string, string> { { "P", "pierwotny" }, { "W", "wtórny" } }, "market", "market")
+                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:", Setups.GetInstance().OFFER_TYPES, "offer_type","offer_type")
+                                @RealEstateHelpers.MakeDropDown("Rynek:", Setups.GetInstance().MARKETS, "market", "market")
                                 @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
                                 @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
                                 @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
@@ -156,75 +135,28 @@
                             </div><!-- end of DOM -->
                             <!-- DZIALKA -->
                             <div id="dzialka">
-                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:",
-                                                    new Dictionary<string, string> {
-                                                        { "S", "oferta sprzedaży" },
-                                                        { "K", "oferta kupna" },
-                                                        { "Z", "oferta zamiany" },
-                                                        { "W", "oferta wynajmu" }},
-                                                    "offer_type",
-                                                    "offer_type")
+                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:", Setups.GetInstance().OFFER_TYPES, "offer_type", "offer_type")
                                 @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
                                 @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
                                 @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
-                                @RealEstateHelpers.MakeDropDown("Rodzaj działki:",
-                                                    new Dictionary<string, string> {
-                                                      {"B", "budowlana"},
-                                                      {"R", "rolna"},
-                                                      {"I", "inwestycyjna"},
-                                                      {"U", "usługowa"},
-                                                      {"P","przemysłowa"},
-                                                      {"L","leśna"},
-                                                      {"O","rolno-budowlana"}},
-                                                    "parcel_type",
-                                                    "parcel_type")
-
+                                @RealEstateHelpers.MakeDropDown("Rodzaj działki:", Setups.GetInstance().PARCEL_TYPES, "parcel_type","parcel_type")
 
                             </div><!-- end of DZIALKA -->
                             <!-- GARAZ-->
                             <div id="garaz">
-                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:",
-                                                    new Dictionary<string, string> {
-                                                        { "S", "oferta sprzedaży" },
-                                                        { "K", "oferta kupna" },
-                                                        { "Z", "oferta zamiany" },
-                                                        { "W", "oferta wynajmu" }},
-                                                    "offer_type",
-                                                    "offer_type")
+                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:", Setups.GetInstance().OFFER_TYPES, "offer_type", "offer_type")
                                 @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
                                 @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
                                 @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
-                                @RealEstateHelpers.MakeDropDown("Konstrukcja:",
-                                                    new Dictionary<string, string> {
-                                                        {"B", "blaszak"},
-                                                        {"M", "murowany"},
-                                                        {"P", "pod budynkiem"},
-                                                        {"W", "wiata"}},
-                                                    "garage_construction",
-                                                    "garage_construction")
+                                @RealEstateHelpers.MakeDropDown("Konstrukcja:", Setups.GetInstance().GARAGE_CONSTRUCTIONS, "garage_construction","garage_construction")
                             </div><!-- end of GARAZ-->
                             <!-- LOKAL -->
                             <div id="lokal">
-                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:",
-                                                    new Dictionary<string, string> {
-                                                        { "S", "oferta sprzedaży" },
-                                                        { "K", "oferta kupna" },
-                                                        { "Z", "oferta zamiany" },
-                                                        { "W", "oferta wynajmu" }},
-                                                    "offer_type",
-                                                    "offer_type")
+                                @RealEstateHelpers.MakeDropDown("Rodzaj oferty:", Setups.GetInstance().OFFER_TYPES, "offer_type", "offer_type")
                                 @RealEstateHelpers.MakeTextEditBetween("Cena:", "price_min", "price_min", "np. 80000", "price_max", "price_max", "np. 200000")
                                 @RealEstateHelpers.MakeTextEdit("Miejscowość", "np. Rzeszów", "location", "location")
                                 @RealEstateHelpers.MakeTextEditBetween("Powierychnia w m2:", "area_min", "area_min", "np. 40", "area_max", "area_max", "np. 120")
-                                @RealEstateHelpers.MakeDropDown("Przeznaczenie:",
-                                                    new Dictionary<string, string> {
-                                                        {"0","-"},
-                                                        {"1","biuro"},
-                                                        {"2","hale i magazyny"},
-                                                        {"3","handel i usługi"},
-                                                        {"4","przemysł i produkcja"} },
-                                                    "local_purpose",
-                                                    "local_purpose")
+                                @RealEstateHelpers.MakeDropDown("Przeznaczenie:", Setups.GetInstance().LOCAL_PURPOSE,"local_purpose","local_purpose")
                             </div><!-- end of GARAZ-->
                             <!-- POKOJ -->
                             <div id="pokoj">

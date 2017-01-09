@@ -10,7 +10,23 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <title></title>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Social.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>  
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.dropdown-toggle').dropdown();
+            $('.mydropdown li > a').click(function () {
+                $('#text').text($(this).html());
+            })});
+    </script>
+
 </head>
 <body>
     <div>

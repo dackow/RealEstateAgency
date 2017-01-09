@@ -22,10 +22,12 @@ namespace RealEstateAgency.Domain.Setup
                                                                                                 { "Z", "oferta zamiany" },
                                                                                                 { "W", "oferta wynajmu" }};
 
-        public readonly Dictionary<string, string> MARKETS = new Dictionary<string, string> { { "P", "pierwotny" },
+        public readonly Dictionary<string, string> MARKETS = new Dictionary<string, string> {{ "0", "-" },
+                                                                                             { "P", "pierwotny" },
                                                                                              { "W", "wtórny" } };
 
-        public readonly Dictionary<string, string> PARCEL_TYPES = new Dictionary<string, string> { { "B", "budowlana"},
+        public readonly Dictionary<string, string> PARCEL_TYPES = new Dictionary<string, string> {{ "0", "-"},
+                                                                                                  { "B", "budowlana"},
                                                                                                   {"R", "rolna"},
                                                                                                   {"I", "inwestycyjna"},
                                                                                                   {"U", "usługowa"},
@@ -33,10 +35,11 @@ namespace RealEstateAgency.Domain.Setup
                                                                                                   {"L","leśna"},
                                                                                                   {"O","rolno-budowlana"}};
 
-        public readonly Dictionary<string, string> GARAGE_CONSTRUCTIONS = new Dictionary<string, string> { {"B", "blaszak"},
-                                                                                                           {"M", "murowany"},
+        public readonly Dictionary<string, string> GARAGE_CONSTRUCTIONS = new Dictionary<string, string> {{"0", "-"},
+                                                                                                          { "B", "blaszak"},
+                                                                                                          {"M", "murowany"},
                                                                                                           {"P", "pod budynkiem"},
-                                                                                                           {"W", "wiata"}};
+                                                                                                          {"W", "wiata"}};
 
         public readonly Dictionary<string, string> LOCAL_PURPOSE = new Dictionary<string, string> { {"0","-"},
                                                                                                    {"1","biuro"},

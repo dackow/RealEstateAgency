@@ -19,6 +19,18 @@ namespace RealEstateAgency.Domain.Concrete
             }
         }
 
+        public Offer DeleteOffer(int id)
+        {
+            Offer dbEntry = context.Offers.Find(id);
+
+            if (dbEntry != null)
+            {
+                context.Offers.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
+
         public void SaveOffer(Offer offer)
         {
             if (offer.Id == 0)
