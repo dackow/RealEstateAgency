@@ -20,10 +20,24 @@ namespace RealEstateAgency.WebUI.Controllers
             repository = repo;
         }
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(string category)
         {
-            return View(repository.Offers);
+            var offers = from o in repository.Offers
+                         select o;
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                offers = offers.Where(o => o.Category == category);
+                ViewBag.SelectedCategory = "Kategoria: " + Setups.GetInstance().CATEGORIES[category];
+            }
+            else
+            {
+                ViewBag.SelectedCategory = "Wszystkie kategorie";
+            }
+            
+            return View(offers);
         }
+
 
         public ViewResult Edit(int Id)
         {

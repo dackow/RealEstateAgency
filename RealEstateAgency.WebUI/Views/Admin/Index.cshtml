@@ -1,16 +1,23 @@
 ﻿@model IEnumerable<RealEstateAgency.Domain.Entities.Offer>
+@using RealEstateAgency.Domain.Setup
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Zarządzanie ofertami";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Zarządzaj ofertami</h2>
+<form asp-controller="Admin" asp-action="Index">
+    <div class="container-fluid">
+        <div>@RealEstateHelpers.MakeSearchDropDown("", Setups.GetInstance().CATEGORIES, "category", "category", "Wyświetl", (string)ViewBag.SelectedValue)</div>
 
-
+    </div>
+</form> 
+<br />
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div>Wszystkie oferty</div>
+        <div class="btn-success text-center">@ViewBag.SelectedCategory</div>
+        
     </div>
 
     <div class="panel-body">
@@ -43,7 +50,7 @@
     </div>
 
     <div class="panel-footer">
-        @Html.ActionLink("Dodaj oferte...", "Add", null, new { @class = "btn btn-default"})
+        @Html.ActionLink("Dodaj oferte...", "Add", null, new { @class = "btn btn-info"})
     </div>
 </div>
 

@@ -23,6 +23,31 @@
     </div>
 }
 
+@helper MakeSearchDropDown(string label, Dictionary<string, string> values, string id, string name, string text, string selectedValue)
+{
+    <div class="form-group">
+        <div class="col-md-2">
+            <select id="@id" name="@name" class="form-control btn-default">
+                @foreach (var value in values)
+                {
+                    if (value.Key == selectedValue)
+                    {
+                        <option value="@value.Key" selected>@value.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@value.Key">@value.Value</option>
+                    }
+
+                }
+            </select>
+        </div>        
+        <div class="col-md-1">
+            <input type="submit" value="@text" class="btn btn-default" />    
+        </div>
+    </div>
+}
+
 @helper MakeTextEditBetween(string label, string id_min, string name_min, string placeholder_min,string id_max, string name_max, string placeholder_max)     
 {
 <div class="form-group">

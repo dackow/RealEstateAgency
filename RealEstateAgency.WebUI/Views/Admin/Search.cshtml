@@ -1,0 +1,20 @@
+﻿@model IEnumerable<RealEstateAgency.Domain.Entities.Offer>
+
+@foreach (var item in Model)
+            {
+    <tr>
+        <td class="text-right">@item.Id</td>
+        <td>
+            @Html.ActionLink(item.Name, "Edit", new { item.Id })
+        </td>
+        <td class="text-right">@item.Price.ToString("c")</td>
+        <td class="text-center">
+            @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { onclick = "return confirm('Czy napewno chcesy usunąć tą ofertę?');" })
+            @*@using (Html.BeginForm("Delete", "Admin"))
+                {
+                    @Html.Hidden("id", item.Id)
+                    <input type="submit" class="btn btn-default btn-xs" value="Usuń"  />
+                }*@
+        </td>
+    </tr>
+}
