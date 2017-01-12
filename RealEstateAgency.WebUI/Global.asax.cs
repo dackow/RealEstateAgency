@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RealEstateAgency.WebUI.Binders;
+using RealEstateAgency.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +13,7 @@ namespace RealEstateAgency.WebUI
     {
         protected void Application_Start()
         {
+            ModelBinders.Binders.Add(typeof(SearchCriteria), new SearchCriteriaModelBinder());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

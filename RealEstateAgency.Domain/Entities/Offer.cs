@@ -57,5 +57,8 @@ namespace RealEstateAgency.Domain.Entities
 
         [DisplayName("Przeznaczenie lokalu")]
         public string Local_Purpose { get; set; }
+
+        
+        public DateTime Entered_DT { get; set; }
     }
 }

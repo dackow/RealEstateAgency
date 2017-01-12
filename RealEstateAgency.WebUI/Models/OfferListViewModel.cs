@@ -12,5 +12,9 @@ namespace RealEstateAgency.WebUI.Models
         public PagingInfo PagingInfo { get; set; }
 
         public string CurrentCategory { get; set; }
+
+        public SearchCriteria SearchCriteria{ get; set; }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -49,7 +50,7 @@ namespace RealEstateAgency.WebUI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Offer", action = "List" }
+                defaults: new { controller = "Offer", action = "List", searchCriteria = new SearchCriteria() }
             );
         }
     }
