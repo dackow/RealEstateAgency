@@ -36,10 +36,24 @@ namespace RealEstateAgency.WebUI.Controllers
         public ViewResult List(string category, SearchCriteria searchCriteria, int page = 1)
         {
             var result = repository.Offers.AsQueryable();
-            
+
+            #region Search Criteria
             if (!string.IsNullOrEmpty(searchCriteria.category))
             {
                 result = result.Where(o => o.Category == searchCriteria.category);
+
+                if (!string.IsNullOrEmpty(searchCriteria.location))
+                {
+                    result = result.Where(o => o.Location.ToUpper() == searchCriteria.location.ToUpper());
+                }
+                if (searchCriteria.price_max != null)
+                {
+                    result = result.Where(o => o.Price <= searchCriteria.price_max);
+                }
+                if (searchCriteria.price_min != null)
+                {
+                    result = result.Where(o => o.Price >= searchCriteria.price_min);
+                }
 
                 switch (searchCriteria.category)
                 {
@@ -52,25 +66,13 @@ namespace RealEstateAgency.WebUI.Controllers
                         {
                             result = result.Where(o => o.Area >= searchCriteria.m_area_min);
                         }
-                        if (!string.IsNullOrEmpty(searchCriteria.m_location))
-                        {
-                            result = result.Where(o => o.Location.ToUpper() == searchCriteria.m_location.ToUpper());
-                        }
-                        if (!string.IsNullOrEmpty(searchCriteria.m_market))
+                        if (!string.IsNullOrEmpty(searchCriteria.m_market) && searchCriteria.m_market != "0")
                         {
                             result = result.Where(o => o.Market == searchCriteria.m_market);
                         }
                         if (!string.IsNullOrEmpty(searchCriteria.m_offer_type))
                         {
                             result = result.Where(o => o.Offer_Type == searchCriteria.m_offer_type);
-                        }
-                        if (searchCriteria.m_price_max != null)
-                        {
-                            result = result.Where(o => o.Price <= searchCriteria.m_price_max);
-                        }
-                        if (searchCriteria.m_price_min != null)
-                        {
-                            result = result.Where(o => o.Price >= searchCriteria.m_price_min);
                         }
                         if (searchCriteria.m_rooms_max != null)
                         {
@@ -80,7 +82,7 @@ namespace RealEstateAgency.WebUI.Controllers
                         {
                             result = result.Where(o => o.Rooms >= searchCriteria.m_rooms_min);
                         }
-                        
+
                         break;
                     case "D":
                         if (searchCriteria.d_area_max != null)
@@ -91,25 +93,13 @@ namespace RealEstateAgency.WebUI.Controllers
                         {
                             result = result.Where(o => o.Area >= searchCriteria.d_area_min);
                         }
-                        if (!string.IsNullOrEmpty(searchCriteria.d_location))
-                        {
-                            result = result.Where(o => o.Location.ToUpper() == searchCriteria.d_location.ToUpper());
-                        }
-                        if (!string.IsNullOrEmpty(searchCriteria.d_market))
+                        if (!string.IsNullOrEmpty(searchCriteria.d_market) && searchCriteria.d_market != "0")
                         {
                             result = result.Where(o => o.Market == searchCriteria.d_market);
                         }
                         if (!string.IsNullOrEmpty(searchCriteria.d_offer_type))
                         {
                             result = result.Where(o => o.Offer_Type == searchCriteria.d_offer_type);
-                        }
-                        if (searchCriteria.d_price_max != null)
-                        {
-                            result = result.Where(o => o.Price <= searchCriteria.d_price_max);
-                        }
-                        if (searchCriteria.d_price_min != null)
-                        {
-                            result = result.Where(o => o.Price >= searchCriteria.d_price_min);
                         }
                         if (searchCriteria.d_rooms_max != null)
                         {
@@ -129,56 +119,97 @@ namespace RealEstateAgency.WebUI.Controllers
                         {
                             result = result.Where(o => o.Area >= searchCriteria.n_area_min);
                         }
-                        if (searchCriteria.n_price_max != null)
+                        if (!string.IsNullOrEmpty(searchCriteria.n_offer_type))
                         {
-                            result = result.Where(o => o.Price <= searchCriteria.n_price_max);
+                            result = result.Where(o => o.Offer_Type == searchCriteria.n_offer_type);
                         }
-                        if (searchCriteria.n_price_min != null)
+                        if (!string.IsNullOrEmpty(searchCriteria.n_parcel_type))
                         {
-                            result = result.Where(o => o.Price >= searchCriteria.n_price_min);
+                            result = result.Where(o => o.Parcel_Type == searchCriteria.n_parcel_type);
                         }
                         break;
                     case "G":
+                        if (searchCriteria.g_area_max != null)
+                        {
+                            result = result.Where(o => o.Area <= searchCriteria.g_area_max);
+                        }
+                        if (searchCriteria.g_area_min != null)
+                        {
+                            result = result.Where(o => o.Area >= searchCriteria.g_area_min);
+                        }
+                        if (!string.IsNullOrEmpty(searchCriteria.g_offer_type))
+                        {
+                            result = result.Where(o => o.Offer_Type == searchCriteria.g_offer_type);
+                        }
+                        if (!string.IsNullOrEmpty(searchCriteria.g_garage_construction))
+                        {
+                            result = result.Where(o => o.Garage_Construction == searchCriteria.g_garage_construction);
+                        }
                         break;
                     case "L":
+                        if (searchCriteria.l_area_max != null)
+                        {
+                            result = result.Where(o => o.Area <= searchCriteria.l_area_max);
+                        }
+                        if (searchCriteria.l_area_min != null)
+                        {
+                            result = result.Where(o => o.Area >= searchCriteria.l_area_min);
+                        }
+                        if (!string.IsNullOrEmpty(searchCriteria.l_offer_type))
+                        {
+                            result = result.Where(o => o.Offer_Type == searchCriteria.l_offer_type);
+                        }
+                        if (!string.IsNullOrEmpty(searchCriteria.l_local_purpose))
+                        {
+                            result = result.Where(o => o.Local_Purpose == searchCriteria.l_local_purpose);
+                        }
                         break;
                     case "P":
                         break;
 
                 }
-            }
 
-            if (!string.IsNullOrEmpty(searchCriteria.time))
-            {
-                if (searchCriteria.time != "0")
+
+                if (!string.IsNullOrEmpty(searchCriteria.time))
                 {
-                    DateTime? referenceDateTime = null;
-                    switch (searchCriteria.time)
+                    if (searchCriteria.time != "0")
                     {
-                        case "1":
-                            referenceDateTime = DateTime.Now.AddDays(-1);
-                            break;
-                        case "2":
-                            referenceDateTime = DateTime.Now.AddDays(-7);
-                            break;
-                        case "3":
-                            referenceDateTime = DateTime.Now.AddMonths(-1);
-                            break;
-                        case "4":
-                            referenceDateTime = DateTime.Now.AddMonths(-3);
-                            break;
-                        default:
-                            break;
-                    }
+                        DateTime? referenceDateTime = null;
+                        switch (searchCriteria.time)
+                        {
+                            case "1":
+                                referenceDateTime = DateTime.Now.AddDays(-1);
+                                break;
+                            case "2":
+                                referenceDateTime = DateTime.Now.AddDays(-7);
+                                break;
+                            case "3":
+                                referenceDateTime = DateTime.Now.AddMonths(-1);
+                                break;
+                            case "4":
+                                referenceDateTime = DateTime.Now.AddMonths(-3);
+                                break;
+                            default:
+                                break;
+                        }
 
-                    if (referenceDateTime.HasValue)
-                    {
-                        result = result.Where(o => o.Entered_DT > referenceDateTime.Value);
+                        if (referenceDateTime.HasValue)
+                        {
+                            result = result.Where(o => o.Entered_DT > referenceDateTime.Value);
+                        }
                     }
                 }
             }
+            else
+            {
+                //category == null ? result.Count() : result.Where(o => o.Category == category)
+                if (category != null)
+                {
+                    result = result.Where(o => o.Category == category);
+                }
+            }
+            #endregion
 
-            
 
             OfferListViewModel model = new OfferListViewModel
             {
@@ -189,10 +220,10 @@ namespace RealEstateAgency.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = category == null ?  repository.Offers.Count() : repository.Offers.Where(o=> o.Category == category).Count()
+                    TotalItems = category == null ? result.Count() : result.Where(o=> o.Category == category).Count()
                 },
-                CurrentCategory = category,
-
+                CurrentCategory = category != null? category : searchCriteria.category,
+                SearchCriteria = searchCriteria
             };
             return View(model);
         }

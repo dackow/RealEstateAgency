@@ -8,7 +8,7 @@
     </div>
 }
 
-@helper MakeDropDown(string label, Dictionary<string, string> values, string id, string name)
+@*@helper MakeDropDown(string label, Dictionary<string, string> values, string id, string name)
 {
     <div class="form-group">
         <label class="col-md-6 control-label" for="category">@label</label>
@@ -16,8 +16,30 @@
             <select id="@id" name="@name" class="form-control">
                 @foreach (var value in values)
                 {
-                    <option value="@value.Key">@value.Value</option>
-                }                
+                   <option value="@value.Key">@value.Value</option>
+                }
+            </select>
+        </div>
+    </div>
+}*@
+
+@helper MakeDropDown(string label, Dictionary<string, string> values, string id, string name, string selectedValue)
+{
+    <div class="form-group">
+        <label class="col-md-6 control-label" for="category">@label</label>
+        <div class="col-md-6">
+            <select id="@id" name="@name" class="form-control">
+                @foreach (var value in values)
+                {
+                    if (value.Key == selectedValue)
+                    {
+                        <option value="@value.Key" selected>@value.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@value.Key">@value.Value</option>
+                    }
+                }
             </select>
         </div>
     </div>
@@ -48,22 +70,74 @@
     </div>
 }
 
-@helper MakeTextEditBetween(string label, string id_min, string name_min, string placeholder_min,string id_max, string name_max, string placeholder_max)     
+@helper MakeTextEditBetweenForDecimals(string label, string id_min, string name_min, string placeholder_min,string id_max, string name_max, string placeholder_max, decimal? value1, decimal? value2)     
 {
 <div class="form-group">
     <label class="col-md-6 control-label" for="@name_min">@label</label>
     <div class="col-md-6">
-        <input id="@id_min" name="@name_min" type="text" placeholder="@placeholder_min" class="form-control input-md">
+        @if (value1 != null && value1.HasValue)
+        {
+            <input id="@id_min" name="@name_min" type="text" placeholder="@placeholder_min" class="form-control input-md" value="@value1.Value"/>
+        }
+        else
+        {
+            <input id="@id_min" name="@name_min" type="text" placeholder="@placeholder_min" class="form-control input-md"/>
+        }
+        
     </div>
 </div>
 
 <div class="form-group">
     <label class="col-md-6 control-label" for="@name_max"></label>
     <div class="col-md-6">
-        <input id="@id_max" name="@name_max" type="text" placeholder="@placeholder_max" class="form-control input-md">
+    @if (value2 != null && value2.HasValue)
+    {
+        <input id="@id_max" name="@name_max" type="text" placeholder="@placeholder_max" class="form-control input-md" value="@value2.Value"/>
+    }
+    else
+    {
+        <input id="@id_max" name="@name_max" type="text" placeholder="@placeholder_max" class="form-control input-md" />
+    }
     </div>
 </div>
 }
+
+@helper MakeTextEditBetweenForInts(string label, string id_min, string name_min, string placeholder_min, string id_max, string name_max, string placeholder_max, int? value1, int? value2)
+{
+    <div class="form-group">
+        <label class="col-md-6 control-label" for="@name_min">@label</label>
+        <div class="col-md-6">
+            @if (value1 != null && value1.HasValue)
+            {
+                <input id="@id_min" name="@name_min" type="text" placeholder="@placeholder_min" class="form-control input-md" value="@value1.Value" />
+            }
+            else
+            {
+                <input id="@id_min" name="@name_min" type="text" placeholder="@placeholder_min" class="form-control input-md" />
+            }
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-6 control-label" for="@name_max"></label>
+        <div class="col-md-6">
+            @if (value2 != null && value2.HasValue)
+    {
+                <input id="@id_max" name="@name_max" type="text" placeholder="@placeholder_max" class="form-control input-md" value="@value2.Value" />
+            }
+            else
+            {
+                <input id="@id_max" name="@name_max" type="text" placeholder="@placeholder_max" class="form-control input-md" />
+            }
+        </div>
+    </div>
+}
+
+
+
+
+
 
 @helper LegendaHelper(Dictionary<string, string> dict)
 {
