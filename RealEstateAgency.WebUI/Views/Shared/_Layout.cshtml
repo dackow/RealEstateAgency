@@ -39,6 +39,13 @@
             }
             hideAll();
             displayFirst();
+
+            $("#reset_button").click(
+            function () {
+                this.form.reset();
+                $("#category").val("M").change();
+                return false;
+            })  ;
             
             $("#category").on("change", function () {
                 hideAll();

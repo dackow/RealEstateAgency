@@ -2,7 +2,7 @@
 @using RealEstateAgency.Domain.Setup
 
 <!-- search criteria -->
-<div class="coll-md-2 coll-lg-2">aa</div>
+<div class="coll-md-2 coll-lg-2"></div>
 <div class="col-md-5 coll-lg-5">
     @*<a href="~/Views/Offer/List.cshtml">~/Views/Offer/List.cshtml</a>*@
     <div class="container-fluid">
@@ -55,8 +55,11 @@
 
                 </div>
                 @RealEstateHelpers.MakeDropDown("Pokaż oferty z:", new Dictionary<string, string> { { "0", "-" }, { "1", "ostatnich 24 godzin" }, { "2", "ostatnich 7 dni" }, { "3", "ostatniego miesiąca" }, { "4", "ostatnich 3 miesięcy" } }, "time", "time", Model.time)
-                <button class="btn btn-lg btn-primary center-block" type="submit">Szukaj</button>
             </fieldset>
+            <div class="pull-right">
+                <button class="btn btn-lg btn-primary" type="submit">Szukaj</button>
+                <button class="btn btn-lg btn-info" type="button" id="reset_button">Reset</button>
+            </div>
 
         </form>
     </div>
@@ -64,3 +67,4 @@
     <!-- end of search criteria -->
 </div>
 
+X
