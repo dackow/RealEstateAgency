@@ -33,7 +33,7 @@ namespace RealEstateAgency.WebUI.Controllers
 
        
 
-        public ViewResult List(string category, SearchCriteria searchCriteria, int page = 1)
+        public ViewResult List(SearchCriteria searchCriteria, int page = 1)
         {
             var result = repository.Offers.AsQueryable();
 
@@ -200,14 +200,6 @@ namespace RealEstateAgency.WebUI.Controllers
                     }
                 }
             }
-            else
-            {
-                //category == null ? result.Count() : result.Where(o => o.Category == category)
-                if (category != null)
-                {
-                    result = result.Where(o => o.Category == category);
-                }
-            }
             #endregion
 
 
@@ -220,9 +212,9 @@ namespace RealEstateAgency.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = category == null ? result.Count() : result.Where(o=> o.Category == category).Count()
+                    TotalItems = searchCriteria.category == null ? result.Count() : result.Where(o=> o.Category == searchCriteria.category).Count()
                 },
-                CurrentCategory = category != null? category : searchCriteria.category,
+                CurrentCategory = searchCriteria.category,
                 SearchCriteria = searchCriteria
             };
             return View(model);

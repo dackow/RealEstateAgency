@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<string>
 @using RealEstateAgency.WebUI.Properties
+@using RealEstateAgency.WebUI.Models
+
 <ul class="nav navbar-nav">
     <li class="active">
         <a href="#"><span class="glyphicon glyphicon-home"></span></a>
@@ -8,17 +10,13 @@
     {
         <li>
             @Html.RouteLink(Resources.ResourceManager.GetString(link), new
-   {
-       controller = "Offer",
-       action = "List",
-       category = link,
+       {
+           controller = "Offer",
+           action = "List",
+           //category = link,
+           searchCriteria = new SearchCriteria{ category = "D"},
        page = 1
-   }, new { Style = "color:white " + (link != ViewBag.SelectedCategory ? "" : ";color:blue") })
-
-
+       }, new { Style = "color:white " + (link != ViewBag.SelectedCategory ? "" : ";color:blue") })
         </li>
     }
-
-
-
 </ul>
