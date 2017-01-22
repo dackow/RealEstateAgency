@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -121,6 +122,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\blueimp-gallery-indicator.css" />
+    <Content Include="Content\blueimp-gallery-video.css" />
+    <Content Include="Content\blueimp-gallery.css" />
+    <Content Include="Content\blueimp-gallery.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -131,6 +136,8 @@
     <Content Include="Content\NavStyle.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Social.css" />
+    <Content Include="Content\uploadify.css" />
+    <Content Include="Content\uploadify.swf" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -142,9 +149,21 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="img\error.png" />
+    <Content Include="img\error.svg" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\play-pause.png" />
+    <Content Include="img\play-pause.svg" />
+    <Content Include="img\video-play.png" />
+    <Content Include="img\video-play.svg" />
     <Content Include="Resources\cp.png" />
     <Content Include="Resources\cp_alpha_mini.png" />
     <Content Include="Resources\logo_n1.png" />
+    <Content Include="Scripts\blueimp-gallery-fullscreen.js" />
+    <Content Include="Scripts\blueimp-gallery-indicator.js" />
+    <Content Include="Scripts\blueimp-gallery.js" />
+    <Content Include="Scripts\blueimp-gallery.min.js" />
+    <Content Include="Scripts\blueimp-helper.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\FontAwesome.otf" />
@@ -153,6 +172,10 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="App_Code\RealEstateHelpers.cshtml" />
+    <Content Include="Content\blueimp-gallery.min.css.map" />
+    <Content Include="Scripts\blueimp-gallery.min.js.map" />
+    <None Include="Properties\PublishProfiles\cztery-pokoje.aspnet.pl - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\cztery-pokoje.aspnet.pl - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropdowns-enhancement.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -163,13 +186,24 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jquery.blueimp-gallery.min.js.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.blueimp-gallery.js" />
+    <Content Include="Scripts\jquery.blueimp-gallery.min.js" />
+    <Content Include="Scripts\jquery.uploadify.js" />
+    <Content Include="Scripts\jquery.uploadify.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\ReadEstate.js" />
+    <Content Include="Scripts\uploadify-cancel.png" />
+    <Content Include="Scripts\uploadify.swf" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +213,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,7 +259,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="AgencyImages\" />
+    <Folder Include="App_Data\Images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RealEstateAgency.Domain\RealEstateAgency.Domain.csproj">

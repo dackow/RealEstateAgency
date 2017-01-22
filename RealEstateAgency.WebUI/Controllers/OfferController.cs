@@ -24,14 +24,11 @@ namespace RealEstateAgency.WebUI.Controllers
         {
             repository = repo;
         }
-
-        
+                
         public PartialViewResult SearchCriteria(SearchCriteria criteria)
         {
            return PartialView();
         }
-
-       
 
         public ViewResult List(SearchCriteria searchCriteria, int page = 1)
         {
@@ -169,7 +166,6 @@ namespace RealEstateAgency.WebUI.Controllers
 
                 }
 
-
                 if (!string.IsNullOrEmpty(searchCriteria.time))
                 {
                     if (searchCriteria.time != "0")
@@ -202,7 +198,6 @@ namespace RealEstateAgency.WebUI.Controllers
             }
             #endregion
 
-
             OfferListViewModel model = new OfferListViewModel
             {
                 Offers = result.OrderBy(o => o.Id).
@@ -219,6 +214,28 @@ namespace RealEstateAgency.WebUI.Controllers
             };
             return View(model);
         }
-        
+
+        public FileContentResult GetImage(int id)
+        {
+            Photo photo = repository.GetPhotoForId(id);
+            if (photo != null)
+            {
+                return File(photo.PhotoFile, photo.MimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ActionResult DisplayImagesForOffer(int offerId)
+        {
+            List<Photo> photos = repository.GetPhotosForOffer(offerId);
+               
+            return View("DisplayImagesForOffer", photos.ToList());
+        }
+
+
+
     }
 }

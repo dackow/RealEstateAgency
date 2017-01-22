@@ -9,11 +9,11 @@
 <h2>Dodaj nową ofertę</h2>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do strony głównej", "Index")
 </div>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Add","Admin", new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -138,6 +138,33 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<input type="file" id="multipleFiles" style="width: 50%;" /><div style="width: 77%;float:right" id="progressbar"></div>
+
+    <div id="fileQueue"></div> 
+
+    <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+    <div id="links">
+        <a href="~/AgencyImages/home-002.jpg" title="Banana">
+            <img src="~/AgencyImages/thumb/home-002.jpg" alt="Banana">
+        </a>
+        <a href="~/AgencyImages/home-002.jpg" title="Banana">
+            <img src="~/AgencyImages/thumb/home-002.jpg" alt="Banana">
+        </a>
+        <a href="~/AgencyImages/home-002.jpg" title="Banana">
+            <img src="~/AgencyImages/thumb/home-002.jpg" alt="Banana">
+        </a>
+    </div>
+    Gallery b
+    <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+
+    <div>
+        @Html.ActionLink("Powrót do strony głównej", "Index")
+    </div>

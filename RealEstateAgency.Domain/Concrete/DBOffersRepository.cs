@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RealEstateAgency.Domain.Entities;
+using RealEstateAgency.WebUI.Models;
 
 namespace RealEstateAgency.Domain.Concrete
 {
@@ -19,6 +20,16 @@ namespace RealEstateAgency.Domain.Concrete
             }
         }
 
+        public IEnumerable<Photo> Photos
+        {
+            get
+            {
+                return context.Photos;
+            }
+        }
+
+        
+
         public Offer DeleteOffer(int id)
         {
             Offer dbEntry = context.Offers.Find(id);
@@ -29,6 +40,16 @@ namespace RealEstateAgency.Domain.Concrete
                 context.SaveChanges();
             }
             return dbEntry;
+        }
+
+        public Photo GetPhotoForId(int id)
+        {
+            return context.Photos.Find(id);
+        }
+
+        public List<Photo> GetPhotosForOffer(int offerId)
+        {
+            return context.Photos.Where(p => p.Offer.Id == offerId).ToList();
         }
 
         public void SaveOffer(Offer offer)

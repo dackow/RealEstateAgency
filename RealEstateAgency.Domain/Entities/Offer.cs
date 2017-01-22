@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -58,7 +59,11 @@ namespace RealEstateAgency.Domain.Entities
         [DisplayName("Przeznaczenie lokalu")]
         public string Local_Purpose { get; set; }
 
-        
+        [DataType(DataType.DateTime)]
+        [DisplayName("Data utworzenia")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
         public DateTime Entered_DT { get; set; }
+
+        public virtual ICollection<Photo> Photos { get; set; }
     }
 }

@@ -15,21 +15,82 @@
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/Social.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="~/Content/blueimp-gallery.min.css">
+    <link href="~/Content/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/uploadify.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>  
-
+   
     <script type="text/javascript">
         $(document).ready(function () {
-//            $("#category").change(function () {
-
-  //              $("input[type=submit]").click();
-
-    //        });
             $('.dropdown-toggle').dropdown();
             $('.mydropdown li > a').click(function () {
                 $('#text').text($(this).html());
-            })});
+            });
+
+            document.getElementById('links').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement,
+                    link = target.src ? target.parentNode : target,
+                    options = { index: link, event: event },
+                    links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            };
+
+
+            $("#multipleFiles").uploadify({
+                'uploader': '/Scripts/uploadify.swf',
+                'script': '/Home/Upload',
+                'fileDataName': 'file',
+                'fileDesc': 'Web Image Files (.JPG, .GIF, .PNG)',
+                'fileExt': '*.jpg;*.gif;*.png',
+                'buttonText': 'Dodaj zdjęcia',
+                'multi': true,
+                'sizeLimit': 1048576,
+                'simUploadLimit': 1,
+                'cancelImg': '/Scripts/cancel.png',
+                'auto': true,
+                'height': 30,
+                'queueID': 'fileQueue',
+                'onError': function (a, b, c, d) {
+                    alert("error");
+                    if (d.status == 404)
+                        alert("Could not find upload script. Use a path relative to: " + "<?= getcwd() ?>");
+                    else if (d.type === "HTTP")
+                        alert("error " + d.type + ": " + d.status);
+                    //else if (d.type === "File Size")
+                    //   alert(c.name + " " + d.type + " Limit: " + Math.round(d.info / (1024 * 1024)) + "MB");
+                    //else
+                    //    alert("error " + d.type + ": " + d.text);
+                },
+                'onComplete': function (event, queueId, fileObj, response, data) {
+                    alert("complete");
+                    //Do Nothing Yet
+                    var result = $.parseJSON(response);
+                    $("#progressbar").progressbar("value", result.Percentage);
+                },
+                'onSelectOnce': function (event, data) {
+                    alert("select once");
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Home/SetUploadCount',
+                        data: { TotalCount: data.filesSelected },
+                        dataType: 'json',
+                        success: function (data) {
+                        },
+                        error: function (XMLHttpRequest) {
+                            var errorMsg = XMLHttpRequest.statusText;
+                        },
+                        complete: function (jsonData) {
+                        }
+                    });
+                }
+            });
+
+            $("#progressbar").progressbar();
+        }
+            );
     </script>
 
 </head>
@@ -41,5 +102,11 @@
         }
         @RenderBody()
     </div>
+
+    
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/blueimp-gallery.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery.uploadify.js"></script>
 </body>
 </html>

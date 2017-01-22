@@ -53,6 +53,7 @@
     <Compile Include="Concrete\DBOffersRepository.cs" />
     <Compile Include="Concrete\READBContext.cs" />
     <Compile Include="Entities\Offer.cs" />
+    <Compile Include="Entities\Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup\Setups.cs" />
   </ItemGroup>
