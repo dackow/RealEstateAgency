@@ -14,7 +14,6 @@ namespace RealEstateAgency.WebUI.Controllers
     {
         IOfferRepository repository;
 
-
         public AdminController(IOfferRepository repo)
         {
             repository = repo;
