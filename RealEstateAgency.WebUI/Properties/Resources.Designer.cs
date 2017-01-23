@@ -124,6 +124,15 @@ namespace RealEstateAgency.WebUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 5.
+        /// </summary>
+        public static string NUM_PHOTOS_IN_LIST {
+            get {
+                return ResourceManager.GetString("NUM_PHOTOS_IN_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pokoje.
         /// </summary>
         public static string P {

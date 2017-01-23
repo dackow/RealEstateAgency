@@ -1,5 +1,7 @@
 ﻿@model RealEstateAgency.Domain.Entities.Offer
 
+@using RealEstateAgency.WebUI.Helpers
+
 <div class="well">
     <div class="row">
         <h3>
@@ -22,5 +24,31 @@
     </div>
 
     <span class="lead">@Model.Description</span>
+    @*<div><img src="~/AgencyImages/1.jpg" width="100" />
+        <img src="~/AgencyImages/2.jpg" width="100" />
+        <img src="~/AgencyImages/3.jpg" width="100" />
+    </div>*@
+
+
+    @if (Model.Photos != null)
+    {
+        int NUM_PHOTOS_IN_LIST = ResourceHelper.GetNumberForCode("NUM_PHOTOS_IN_LIST");
+        int index = 0;
+        foreach (var ph in Model.Photos)
+        {
+            if (index < NUM_PHOTOS_IN_LIST)
+            {
+                <img src="@Url.Action("GetImage","Offer", new { id = ph.Id})" width="100" />
+            }
+            else
+            {
+                break;
+            }
+        }
+
+    }
+    <div>
+
+    </div>
 </div>
 

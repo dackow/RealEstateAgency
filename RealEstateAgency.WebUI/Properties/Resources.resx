@@ -138,6 +138,10 @@
   <data name="N" xml:space="preserve">
     <value>Działki lub grunty</value>
   </data>
+  <data name="NUM_PHOTOS_IN_LIST" xml:space="preserve">
+    <value>5</value>
+    <comment>Number of photos being displayed on main site's list </comment>
+  </data>
   <data name="P" xml:space="preserve">
     <value>Pokoje</value>
   </data>

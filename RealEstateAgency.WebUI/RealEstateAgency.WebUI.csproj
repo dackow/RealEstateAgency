@@ -122,6 +122,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgencyImages\1.jpg" />
+    <Content Include="AgencyImages\2.jpg" />
+    <Content Include="AgencyImages\3.jpg" />
     <Content Include="Content\blueimp-gallery-indicator.css" />
     <Content Include="Content\blueimp-gallery-video.css" />
     <Content Include="Content\blueimp-gallery.css" />
@@ -259,7 +262,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AgencyImages\" />
     <Folder Include="App_Data\Images\" />
   </ItemGroup>
   <ItemGroup>
