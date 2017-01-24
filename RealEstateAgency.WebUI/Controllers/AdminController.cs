@@ -2,8 +2,10 @@
 using RealEstateAgency.Domain.Entities;
 using RealEstateAgency.Domain.Setup;
 using RealEstateAgency.WebUI.Helpers;
+using RealEstateAgency.WebUI.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +15,7 @@ namespace RealEstateAgency.WebUI.Controllers
     public class AdminController : Controller
     {
         IOfferRepository repository;
+        
 
         public AdminController(IOfferRepository repo)
         {
@@ -78,11 +81,44 @@ namespace RealEstateAgency.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Offer offer)
+        public ActionResult Add(Offer offer, IEnumerable<HttpPostedFileBase> files)
         {
             if (ModelState.IsValid)
             {
                 repository.SaveOffer(offer);
+
+                //process photo images
+                if (files != null)
+                {
+                    string PATH_TO_SAVE_IMAGES = Server.MapPath("~/AgencyImages");
+                    try
+                    {
+                        foreach (var photo in files)
+                        {
+                            string directory = Path.Combine(PATH_TO_SAVE_IMAGES, offer.Id.ToString());
+                            if (!Directory.Exists(directory))
+                            {
+                                Directory.CreateDirectory(directory);
+                            }
+
+                            if (!Directory.Exists(directory))
+                            {
+                                throw new Exception("Can't find or create the directory : " + directory);
+                            }
+                            //string path = Path.Combine(PATH_TO_SAVE_IMAGES, Path.GetFileName(photo.FileName));
+
+                            string fileName = Path.GetFileName(photo.FileName);
+                            string fullPath = Path.Combine(directory, fileName);
+                            photo.SaveAs(fullPath);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        TempData["message"] = "ERROR:" + ex.Message.ToString();
+                        return RedirectToAction("Index");
+                    }
+                }
+
                 TempData["message"] = string.Format("{0} has been saved", offer.Name);
                 return RedirectToAction("Index");
             }

@@ -1,5 +1,4 @@
-﻿using RealEstateAgency.WebUI.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -11,6 +10,11 @@ namespace RealEstateAgency.Domain.Entities
 {
     public class Offer
     {
+        public Offer()
+        {
+            Entered_DT = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Oferta musi posiadać tytuł")]
@@ -64,6 +68,5 @@ namespace RealEstateAgency.Domain.Entities
         [DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
         public DateTime Entered_DT { get; set; }
 
-        public virtual ICollection<Photo> Photos { get; set; }
     }
 }

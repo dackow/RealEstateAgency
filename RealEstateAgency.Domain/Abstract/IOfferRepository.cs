@@ -1,5 +1,4 @@
 ﻿using RealEstateAgency.Domain.Entities;
-using RealEstateAgency.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +12,6 @@ namespace RealEstateAgency.Domain.Abstract
         IEnumerable<Offer> Offers { get; }
         void SaveOffer(Offer offer);
         Offer DeleteOffer(int id);
-        IEnumerable<Photo> Photos { get; }
-        Photo GetPhotoForId(int id);
 
-        List<Photo> GetPhotosForOffer(int offerId);
     }
 }

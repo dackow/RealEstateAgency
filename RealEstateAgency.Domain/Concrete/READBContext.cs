@@ -1,5 +1,4 @@
 ﻿using RealEstateAgency.Domain.Entities;
-using RealEstateAgency.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,6 +11,5 @@ namespace RealEstateAgency.Domain.Concrete
     public class READBContext : DbContext
     {
         public DbSet<Offer> Offers { get; set; }
-        public DbSet<Photo> Photos { get; set; }
     }
 }
