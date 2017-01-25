@@ -5,6 +5,7 @@ using RealEstateAgency.WebUI.Helpers;
 using RealEstateAgency.WebUI.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -110,6 +111,29 @@ namespace RealEstateAgency.WebUI.Controllers
                             string fileName = Path.GetFileName(photo.FileName);
                             string fullPath = Path.Combine(directory, fileName);
                             photo.SaveAs(fullPath);
+
+                            string thumb_directory = Path.Combine(PATH_TO_SAVE_IMAGES, offer.Id.ToString(), "thumb");
+                            if (!Directory.Exists(thumb_directory))
+                            {
+                                Directory.CreateDirectory(thumb_directory);
+                            }
+                            if (!Directory.Exists(thumb_directory))
+                            {
+                                throw new Exception("Can't find or create the directory for thumbnails : " + directory);
+                            }
+                            else
+                            {
+                                string thumbFullPath = Path.Combine(thumb_directory, fileName);
+                                //create a thumbnail for the image
+                                using (Image im = Image.FromStream(photo.InputStream, true, true))
+                                {
+                                    int height = (im.Height / (im.Width / 200));
+                                    using (Image thumb = im.GetThumbnailImage(200, height, () => false, IntPtr.Zero))
+                                    {
+                                        thumb.Save(thumbFullPath);
+                                    }
+                                }
+                            }
                         }
                     }
                     catch (Exception ex)

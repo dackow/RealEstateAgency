@@ -38,30 +38,13 @@
                 string[] files = Directory.GetFiles(directory);
                 foreach (string file in files)
                 {
-                    string path = string.Format("{0}{1}{2}{3}{4}", "~/AgencyImages", Path.DirectorySeparatorChar, Model.Id.ToString(), Path.DirectorySeparatorChar, Path.GetFileName(file));
-                    <img src="@Url.Content(path)" width="100" alt="Image" />
+                    //string path = string.Format("{0}{1}{2}{3}{4}{5}{6}", "~/AgencyImages", Path.DirectorySeparatorChar, Model.Id.ToString(), Path.DirectorySeparatorChar, "thumb", Path.DirectorySeparatorChar, Path.GetFileName(file));
+                    string path = Path.Combine("~/AgencyImages", Model.Id.ToString(), "thumb", Path.GetFileName(file));
+                    <img src="@Url.Content(path)" width="200" alt="Image" />
                 }
             }
         }
      </div>
-
-        @*@if (Model.Photos != null)
-            {
-                int NUM_PHOTOS_IN_LIST = ResourceHelper.GetNumberForCode("NUM_PHOTOS_IN_LIST");
-                int index = 0;
-                foreach (var ph in Model.Photos)
-                {
-                    if (index < NUM_PHOTOS_IN_LIST)
-                    {
-                        <img src="@Url.Action("GetImage","Offer", new { id = ph.Id})" width="100" />
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-            }*@
         <div>
 
         </div>

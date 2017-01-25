@@ -215,21 +215,5 @@ namespace RealEstateAgency.WebUI.Controllers
             return View(model);
         }
 
-        //public FileContentResult GetImage(int id)
-        //{
-        //    Photo photo = repository.GetPhotoForId(id);
-        //    if (photo != null)
-        //    {
-        //        return File(photo.PhotoFile, photo.MimeType);
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
-
-
-
-
     }
 }
