@@ -15,10 +15,10 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.TextAreaFor(model => model.Description, new { title = "Wprowadź opis nieruchomości", htmlAttributes = new { @class = "form-control"} , style = "width:100%;max-width:100%" })
+                @Html.TextAreaFor(model => model.Description, new { title = "Wprowadź opis nieruchomości", htmlAttributes = new { @class = "form-control" }, style = "width:100%;max-width:100%" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Price, new {  htmlAttributes = new { @class = "form-control", Title = "Wprowadź cenę nieruchomości" } })
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", Title = "Wprowadź cenę nieruchomości" } })
                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
-                @Html.DropDownListFor(model => model.Category, (List<SelectListItem>) ViewBag.categories, new { htmlAttributes = new { @class = "form -control", Title = "M-mieszkanie,D-dom,N-działka lub grunt,G-garaż,L-lokal użytkowy,P-pokój" } })
+                @Html.DropDownListFor(model => model.Category, (List<SelectListItem>)ViewBag.categories, new { htmlAttributes = new { @class = "form -control", Title = "M-mieszkanie,D-dom,N-działka lub grunt,G-garaż,L-lokal użytkowy,P-pokój" } })
                 @*@Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form -control", Title = "M-mieszkanie,D-dom,N-działka lub grunt,G-garaż,L-lokal użytkowy,P-pokój" } })*@
                 @*@RealEstateHelpers.LegendaHelper(Setups.GetInstance().CATEGORIES)*@
                 @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
@@ -74,7 +74,7 @@
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Market, (List<SelectListItem>)ViewBag.markets, new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.EditorFor(model => model.Market, new { htmlAttributes = new { @class = "form-control" } })
-                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().MARKETS)*@
+                    @RealEstateHelpers.LegendaHelper(Setups.GetInstance().MARKETS)*@
                 @Html.ValidationMessageFor(model => model.Market, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -87,7 +87,7 @@
             </div>
         </div>
 
-        <div id="area"class="form-group">
+        <div id="area" class="form-group">
             @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-9">
                 @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
@@ -108,7 +108,7 @@
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Parcel_Type, (List<SelectListItem>)ViewBag.parcel_types, new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.EditorFor(model => model.Parcel_Type, new { htmlAttributes = new { @class = "form-control" } })
-                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().PARCEL_TYPES)*@
+                    @RealEstateHelpers.LegendaHelper(Setups.GetInstance().PARCEL_TYPES)*@
                 @Html.ValidationMessageFor(model => model.Parcel_Type, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -118,7 +118,7 @@
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Garage_Construction, (List<SelectListItem>)ViewBag.garage_constructions, new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.EditorFor(model => model.Garage_Construction, new { htmlAttributes = new { @class = "form-control" } })
-                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().GARAGE_CONSTRUCTIONS)*@
+                    @RealEstateHelpers.LegendaHelper(Setups.GetInstance().GARAGE_CONSTRUCTIONS)*@
                 @Html.ValidationMessageFor(model => model.Garage_Construction, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -128,10 +128,52 @@
             <div class="col-md-9">
                 @Html.DropDownListFor(model => model.Local_Purpose, (List<SelectListItem>)ViewBag.local_purposes, new { htmlAttributes = new { @class = "form-control" } })
                 @*@Html.EditorFor(model => model.Local_Purpose, new { htmlAttributes = new { @class = "form-control" } })
-                @RealEstateHelpers.LegendaHelper(Setups.GetInstance().LOCAL_PURPOSE)*@
+                    @RealEstateHelpers.LegendaHelper(Setups.GetInstance().LOCAL_PURPOSE)*@
                 @Html.ValidationMessageFor(model => model.Local_Purpose, "", new { @class = "text-danger" })
             </div>
         </div>
+
+
+        <div id="local_purpose" class="form-group">
+            @Html.Label("Aktualne zdjęcia", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @{
+                    string PATH_TO_SAVE_IMAGES = Server.MapPath("~/AgencyImages");
+                    string directory = Path.Combine(PATH_TO_SAVE_IMAGES, Model.Id.ToString());
+                    if (Directory.Exists(directory))
+                    {
+                        string[] files = Directory.GetFiles(directory);
+                        foreach (string file in files)
+                        {
+                            //string path = string.Format("{0}{1}{2}{3}{4}{5}{6}", "~/AgencyImages", Path.DirectorySeparatorChar, Model.Id.ToString(), Path.DirectorySeparatorChar, "thumb", Path.DirectorySeparatorChar, Path.GetFileName(file));
+                            string path = Path.Combine("~/AgencyImages", Model.Id.ToString(), "thumb", Path.GetFileName(file));
+                            @*                        @Html.Label("Zdjęcie " + (index++))*@
+
+                            <img src="@Url.Content(path)" width="200" alt="Image" />
+                        }
+                    }
+                }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Nowe zdjęcia", htmlAttributes: new { @class = "control-label col-md-2" }):
+            <div class="col-md-9">
+                <input type="file" name="files" id="files" multiple />
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-9">
@@ -139,8 +181,7 @@
             </div>
         </div>
     </div>
-}
-
+            }
 
 
 <div>

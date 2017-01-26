@@ -27,6 +27,7 @@
                 <th>Tytuł</th>
                 <th class="text-right">Cena</th>
                 <th class="text-center">Akcje</th>
+                <th class="text-center">Zdjęcia</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -37,12 +38,17 @@
                     </td>
                     <td class="text-right">@item.Price.ToString("c")</td>
                     <td class="text-center">
+                        @*@Html.ActionLink("Usuń", "Delete", "Admin", null, new { @class = "btn btn-danger" })*@
                          @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { onclick = "return confirm('Czy napewno chcesy usunąć tą ofertę?');" })
                         @*@using (Html.BeginForm("Delete", "Admin"))
                         {
                             @Html.Hidden("id", item.Id)
                             <input type="submit" class="btn btn-default btn-xs" value="Usuń"  />
                         }*@
+                    </td>
+                        
+                    <td class="text-center">
+                        @Html.ActionLink("Usuń", "DeleteImages", new { id = item.Id }, new { onclick = "return confirm('Czy napewno chcesy zdjęcie powiązane z tą ofertę?');" })
                     </td>
                 </tr>
             }
