@@ -4,16 +4,45 @@
 
 <div class="well">
     <div class="row">
-        <h3>
-            @if (Model.Category == "M")
-            {
-                <span class="pull-left label label-danger">Mieszkanie</span>
-            }
-            else if (Model.Category == "D")
-            {
-                <span class="pull-left label label-warning">Dom</span>
-            }
+        <h3>@{
+            string css = "pull-left label label-";
+            string name = string.Empty;
 
+            switch (Model.Category)
+            {
+                case "M":
+                    css += "danger";
+                    name = "Mieszkanie";
+                    break;
+                case "D":
+                    css += "warning";
+                    name = "Dom";
+                    break;
+                case "N":
+                    css += "default";
+                    name = "Działka";
+                    break;
+                case "G":
+                    css += "success";
+                    name = "Garaż";
+                    break;
+                case "L":
+                    css += "info";
+                    name = "Lokal";
+                    break;
+                case "P":
+                    css += "primary";
+                    name = "Pokój";
+                    break;
+                default:
+                    css += "primary";
+                    name = "Pokój";
+                    break;
+
+            }
+            <span class="pull-left label label-@css">@name</span>
+
+        }
             <span class="pull-right label label-primary">@Model.Price.ToString("c")</span>
         </h3>
     </div>
@@ -24,10 +53,6 @@
     </div>
 
     <span class="lead">@Model.Description</span>
-    @*<div><img src="~/AgencyImages/1.jpg" width="100" />
-        <img src="~/AgencyImages/2.jpg" width="100" />
-        <img src="~/AgencyImages/3.jpg" width="100" />
-    </div>*@
 
     <div>
         @{

@@ -12,7 +12,7 @@ namespace RealEstateAgency.WebUI.Binders
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var request = controllerContext.HttpContext.Request;
-            
+                        
             return new SearchCriteria
             {
                 category = request["category"],

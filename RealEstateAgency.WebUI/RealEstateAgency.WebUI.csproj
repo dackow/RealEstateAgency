@@ -149,6 +149,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="img\back.jpg" />
+    <Content Include="img\back1.jpg" />
+    <Content Include="img\back2.jpg" />
+    <Content Include="img\back5.jpg" />
+    <Content Include="img\back8.jpg" />
     <Content Include="img\error.png" />
     <Content Include="img\error.svg" />
     <Content Include="img\loading.gif" />

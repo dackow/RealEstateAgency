@@ -27,7 +27,7 @@
                 <th>Tytuł</th>
                 <th class="text-right">Cena</th>
                 <th class="text-center">Akcje</th>
-                <th class="text-center">Zdjęcia</th>
+@*                <th class="text-center">Zdjęcia</th>*@
             </tr>
             @foreach (var item in Model)
             {
@@ -47,9 +47,9 @@
                         }*@
                     </td>
                         
-                    <td class="text-center">
+                    @*<td class="text-center">
                         @Html.ActionLink("Usuń", "DeleteImages", new { id = item.Id }, new { onclick = "return confirm('Czy napewno chcesy zdjęcie powiązane z tą ofertę?');" })
-                    </td>
+                    </td>*@
                 </tr>
             }
         </table>
@@ -57,6 +57,7 @@
 
     <div class="panel-footer">
         @Html.ActionLink("Dodaj oferte...", "Add", null, new { @class = "btn btn-info"})
+        @Html.ActionLink("Otwórz stronę główną", "", "Offer", null, new { @class = "btn btn-warning pull-right" })
     </div>
 </div>
 
