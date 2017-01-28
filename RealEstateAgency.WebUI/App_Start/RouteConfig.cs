@@ -29,6 +29,14 @@ namespace RealEstateAgency.WebUI
 
             routes.MapRoute(
                 name: null,
+                url: "Contact/{offerId}",
+                defaults: new { controller = "Offer", action = "Contact", offerId = (string)null },
+                constraints: new { offerId = @"\d+" }
+            );
+
+
+            routes.MapRoute(
+                name: null,
                 url: "Page{page}",
                 defaults: new { controller = "Offer", action = "List", category = (string)null },
                 constraints: new { page = @"\d+" }

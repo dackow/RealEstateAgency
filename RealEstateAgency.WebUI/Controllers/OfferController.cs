@@ -5,6 +5,7 @@ using RealEstateAgency.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,6 +29,65 @@ namespace RealEstateAgency.WebUI.Controllers
         public PartialViewResult SearchCriteria(SearchCriteria criteria)
         {
            return PartialView();
+        }
+
+        public ViewResult Contact(string offerId)
+        {
+            ContactModel model = new ContactModel { OfferId = offerId };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ContactModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                SmtpClient client = new SmtpClient();
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = true;
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+
+                // setup Smtp authentication
+                System.Net.NetworkCredential credentials =
+                    new System.Net.NetworkCredential("dackow@gmail.com", "omrtxkkzneqcshxo");
+                client.UseDefaultCredentials = false;
+                client.Credentials = credentials;
+
+                MailMessage msg = new MailMessage();
+                msg.From = new MailAddress("dackow@gmail.com");
+                msg.To.Add(new MailAddress("dackow@gmail.com"));
+
+                string offerText = string.Empty;
+                if (model.OfferId != null)
+                {
+                    offerText = string.Format("(oferta#:{0})", model.OfferId);
+                }
+
+                msg.Subject = "Wiadomość ze strony Cztery Pokoje " + offerText;
+                msg.IsBodyHtml = false;
+
+                string body = string.Format("Nadawca: {0}<{1}>\r\n", model.Name, model.Email);
+                body += string.Format("Treść: {0}\r\n", model.Content);
+                msg.Body = body;
+                string result = string.Empty;
+                try
+                {
+                    client.Send(msg);
+                    result = "Wiadomość została wysłana poprawnie";
+                }
+                catch (Exception ex)
+                {
+                    result = "Wystąpił błąd podczas wysyłania wiadomości: " + ex.Message;
+
+                }
+                TempData["message"] = result;
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
         public ViewResult List(SearchCriteria searchCriteria, int page = 1)

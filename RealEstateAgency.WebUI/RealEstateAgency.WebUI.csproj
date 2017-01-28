@@ -227,6 +227,7 @@
     <Compile Include="Helpers\WebConfigOptionsHelper.cs" />
     <Compile Include="Helpers\ElementHelper.cs" />
     <Compile Include="Helpers\PagingHelper.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\OfferListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
@@ -257,6 +258,7 @@
     <Content Include="Views\Admin\Search.cshtml" />
     <Content Include="Views\Shared\SearchCriteriaMainPartial.cshtml" />
     <Content Include="Views\Shared\SearchCriteria.cshtml" />
+    <Content Include="Views\Offer\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

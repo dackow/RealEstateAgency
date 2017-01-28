@@ -77,6 +77,13 @@
     </script>
 </head>
 <body>
+    <div>
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+    </div>
+
     <div class="container" style="width:90%">
 
         <div class="row" style="margin-top:10px;">
@@ -85,7 +92,7 @@
             </div>
             <div class="col-md-6">
                 <form class="navbar-form navbar-right" role="search">
-                    <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 502-304-426 <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 509 808 144 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> magdalena.dacko@gmail.com</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Contact", "Offer")'"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 502-304-426 <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 509 808 144 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> magdalena.dacko@gmail.com</button>
                 </form>
             </div>
         </div>
