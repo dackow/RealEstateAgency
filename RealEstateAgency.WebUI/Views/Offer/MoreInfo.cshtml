@@ -9,117 +9,86 @@
 
 <div class="container" style="width:90%">
     <div>
-        <h4>Szczegóły oferty "<i><b>@Model.Name</b></i>" (id: @Model.Id)</h4>
+        <h4>Szczegóły oferty "<i><b>@Model.Name</b></i>" (id: @Model.Id) <div class="pull-right"><input type="button" class="btn btn-danger" value='Cena: @(Model.Price.ToString("c"))' /></div></h4>
         <hr />
+        <div class="well" style="background-color:darkgray">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Description):
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
+           
+            
 
             <dt>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Location):
             </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Category)
-            </dt>
-
-            <dd>
-                @Setups.GetNameForCode(Setups.GetInstance().CATEGORIES, Model.Category)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Offer_Type)
-            </dt>
-
-            <dd>
-                @Setups.GetNameForCode(Setups.GetInstance().OFFER_TYPES, Model.Offer_Type)                
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Market)
-            </dt>
-
-            <dd>
-                @Setups.GetNameForCode(Setups.GetInstance().MARKETS, Model.Market)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Location)
-            </dt>
-
-            <dd>
+            <dd >
                 @Html.DisplayFor(model => model.Location)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Area)
+                @Html.DisplayNameFor(model => model.Area):
             </dt>
 
-            <dd>
+            <dd >
                 @Html.DisplayFor(model => model.Area)
             </dd>
 
             @if (Model.Category == "D" || Model.Category == "M")
             {
-            <dt>
-                @Html.DisplayNameFor(model => model.Rooms)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Rooms):
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Rooms)
-            </dd>
+                <dd  >
+                    @Html.DisplayFor(model => model.Rooms)
+                </dd>
             }
             @if (Model.Category == "N")
             {
-            <dt>
-                @Html.DisplayNameFor(model => model.Parcel_Type)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Parcel_Type):
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Parcel_Type)
-            </dd>
+                <dd  >
+                    @Html.DisplayFor(model => model.Parcel_Type)
+                </dd>
             }
             @if (Model.Category == "G")
             {
-            <dt>
-                @Html.DisplayNameFor(model => model.Garage_Construction)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Garage_Construction):
+                </dt>
 
-            <dd>
-                @Setups.GetNameForCode(Setups.GetInstance().GARAGE_CONSTRUCTIONS, Model.Garage_Construction)
-            </dd>
+                <dd  >
+                    @Setups.GetNameForCode(Setups.GetInstance().GARAGE_CONSTRUCTIONS, Model.Garage_Construction)
+                </dd>
             }
 
-            @if(Model.Category == "L")
+            @if (Model.Category == "L")
             {
-            <dt>
-                @Html.DisplayNameFor(model => model.Local_Purpose)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Local_Purpose):
+                </dt>
 
-            <dd>
-                @Setups.GetNameForCode(Setups.GetInstance().LOCAL_PURPOSE, Model.Local_Purpose)
-            </dd>
+                <dd  >
+                    @Setups.GetNameForCode(Setups.GetInstance().LOCAL_PURPOSE, Model.Local_Purpose)
+                </dd>
             }
 
             <dt>
-                @Html.DisplayNameFor(model => model.Entered_DT)
+                @Html.DisplayNameFor(model => model.Entered_DT):
             </dt>
 
-            <dd>
+            <dd  >
                 @Html.DisplayFor(model => model.Entered_DT)
             </dd>
 
-        </dl>
-    </div>
+
+
+    </dl>
+</div>
     <p>
         @Html.ActionLink("Back to List", "Index")
     </p>
