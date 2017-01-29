@@ -9,7 +9,7 @@
 
 <div class="container" style="width:90%">
     <div>
-        <h4>Szczegóły oferty "<i><b>@Model.Name</b></i>" (id: @Model.Id) <div class="pull-right"><input type="button" class="btn btn-danger" value='Cena: @(Model.Price.ToString("c"))' /></div></h4>
+        <h4>Szczegóły oferty "<i><b>@Model.Name</b></i>" (id: @Model.Id) <div class="pull-right"><input type="button" class="btn btn-success" value='Cena: @(Model.Price.ToString("c"))' /></div></h4>
         <hr />
         <div class="well" style="background-color:darkgray">
             @Html.DisplayFor(model => model.Description)
@@ -24,7 +24,13 @@
             </dt>
 
             <dd >
+                @{
+                    string link = "https://www.google.pl/maps/place/";
+                    string location = Model.Location.Replace(" ", "+");
+                    link = link + location;
+                }
                 @Html.DisplayFor(model => model.Location)
+                (<a href="#" onclick="window.open('@link')"> zobacz na mapie </a>)
             </dd>
 
             <dt>

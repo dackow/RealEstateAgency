@@ -16,9 +16,16 @@ namespace RealEstateAgency.WebUI
 
             routes.MapRoute(
                  name: null,
-                url: "Admin",
-                defaults: new { controller = "Admin", action = "Index"}
+                url: "Offer",
+                defaults: new { controller = "Offer", action = "List"}
             );
+
+            routes.MapRoute(
+                 name: null,
+                url: "Admin",
+                defaults: new { controller = "Admin", action = "Index" }
+            );
+
 
 
             routes.MapRoute(
