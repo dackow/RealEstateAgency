@@ -259,6 +259,7 @@
     <Content Include="Views\Shared\SearchCriteriaMainPartial.cshtml" />
     <Content Include="Views\Shared\SearchCriteria.cshtml" />
     <Content Include="Views\Offer\Contact.cshtml" />
+    <Content Include="Views\Offer\MoreInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

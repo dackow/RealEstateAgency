@@ -90,6 +90,20 @@ namespace RealEstateAgency.WebUI.Controllers
             }
         }
 
+        public ActionResult MoreInfo(int offerId)
+        {
+            Offer o = repository.Offers.Where(of => of.Id == offerId).FirstOrDefault();
+            if (o != null)
+            {
+                return View(o);
+            }
+            else
+            {
+                TempData["message"] = "Nie ma oferty o podanym identyfikatorze";
+                return RedirectToAction("List");
+            }
+        }
+
         public ViewResult List(SearchCriteria searchCriteria, int page = 1)
         {
             var result = repository.Offers.AsQueryable();

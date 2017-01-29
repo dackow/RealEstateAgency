@@ -62,6 +62,25 @@ namespace RealEstateAgency.Domain.Setup
             return _instance;
         }
 
-        
+        public static string GetCategoryForCode(string code)
+        {
+            string category = string.Empty;
+            if (GetInstance().CATEGORIES.TryGetValue(code, out category))
+            {
+                return category;
+            }
+            return string.Empty;
+        }
+
+        public static string GetNameForCode(Dictionary<string,string> dict, string code)
+        {
+            string category = string.Empty;
+            if (dict.TryGetValue(code, out category))
+            {
+                return category;
+            }
+            return string.Empty;
+        }
     }
+
 }
