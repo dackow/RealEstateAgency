@@ -62,7 +62,7 @@ namespace RealEstateAgency.WebUI.Controllers
                 repository.SaveOffer(offer);
 
                 //if pictures exist then remove them first 
-                if (files != null && files.Count() > 0)
+                if (files != null && files.Count() > 0 && files.ToArray().GetValue(0) != null )
                 {
                     DeleteImagesForOfferId(offer.Id);
                     SavePhotosCreateThumbnails(files, offer.Id);
